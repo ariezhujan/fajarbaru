@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTPS} On
+RewriteRule ^(cart/|checkout/) https://%{HTTP_HOST}%{REQUEST_URI}
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^fajarbaru.co.id [NC]
+
+RewriteRule ^(.*)$ https://www.fajarbaru.co.id/ [L,R=301,NC]
+#deny from all

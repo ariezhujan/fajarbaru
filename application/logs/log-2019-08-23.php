@@ -1,0 +1,56 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2019-08-23 12:28:23 --> Severity: Warning --> mysqli::real_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) C:\xampp\htdocs\fajarteknik\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2019-08-23 12:28:23 --> Unable to connect to the database
+ERROR - 2019-08-23 12:34:40 --> 404 Page Not Found: Assets/img
+ERROR - 2019-08-23 12:34:40 --> 404 Page Not Found: Assets/js
+ERROR - 2019-08-23 12:34:42 --> 404 Page Not Found: Assets/css
+ERROR - 2019-08-23 12:35:13 --> 404 Page Not Found: Assets/css
+ERROR - 2019-08-23 12:35:14 --> 404 Page Not Found: Assets/js
+ERROR - 2019-08-23 12:35:14 --> 404 Page Not Found: Assets/img
+ERROR - 2019-08-23 12:37:10 --> 404 Page Not Found: Assets/img
+ERROR - 2019-08-23 12:37:11 --> 404 Page Not Found: Assets/js
+ERROR - 2019-08-23 12:37:12 --> 404 Page Not Found: Assets/css
+ERROR - 2019-08-23 12:39:24 --> 404 Page Not Found: Assets/css
+ERROR - 2019-08-23 12:39:25 --> 404 Page Not Found: Assets/js
+ERROR - 2019-08-23 12:40:53 --> 404 Page Not Found: Assets/css
+ERROR - 2019-08-23 12:40:53 --> 404 Page Not Found: Assets/js
+ERROR - 2019-08-23 12:41:12 --> 404 Page Not Found: Assets/css
+ERROR - 2019-08-23 12:41:12 --> 404 Page Not Found: Assets/js
+ERROR - 2019-08-23 12:42:13 --> 404 Page Not Found: Assets/css
+ERROR - 2019-08-23 12:42:14 --> 404 Page Not Found: Assets/js
+ERROR - 2019-08-23 12:42:31 --> 404 Page Not Found: Assets/css
+ERROR - 2019-08-23 12:42:31 --> 404 Page Not Found: Assets/js
+ERROR - 2019-08-23 12:42:39 --> 404 Page Not Found: Assets/css
+ERROR - 2019-08-23 12:42:40 --> 404 Page Not Found: Assets/js
+ERROR - 2019-08-23 12:50:03 --> 404 Page Not Found: Assets/js
+ERROR - 2019-08-23 12:50:03 --> 404 Page Not Found: Assets/css
+ERROR - 2019-08-23 12:51:03 --> 404 Page Not Found: Assets/css
+ERROR - 2019-08-23 12:51:05 --> 404 Page Not Found: Assets/js
+ERROR - 2019-08-23 12:54:07 --> 404 Page Not Found: Assets/js
+ERROR - 2019-08-23 12:54:08 --> 404 Page Not Found: Assets/css
+ERROR - 2019-08-23 12:54:09 --> 404 Page Not Found: Assets/img
+ERROR - 2019-08-23 12:54:11 --> 404 Page Not Found: Assets/img
+ERROR - 2019-08-23 12:54:14 --> 404 Page Not Found: Assets/img
+ERROR - 2019-08-23 13:20:30 --> 404 Page Not Found: Assets/js
+ERROR - 2019-08-23 13:20:33 --> 404 Page Not Found: Assets/css
+ERROR - 2019-08-23 13:20:34 --> 404 Page Not Found: Assets/img
+ERROR - 2019-08-23 13:21:46 --> 404 Page Not Found: Assets/css
+ERROR - 2019-08-23 13:21:51 --> 404 Page Not Found: Assets/js
+ERROR - 2019-08-23 13:28:11 --> 404 Page Not Found: Assets/css
+ERROR - 2019-08-23 13:28:14 --> 404 Page Not Found: Assets/js
+ERROR - 2019-08-23 13:28:15 --> 404 Page Not Found: Assets/img
+ERROR - 2019-08-23 13:29:11 --> 404 Page Not Found: Assets/css
+ERROR - 2019-08-23 13:29:12 --> 404 Page Not Found: Assets/js
+ERROR - 2019-08-23 13:29:12 --> 404 Page Not Found: Assets/img
+ERROR - 2019-08-23 13:29:42 --> 404 Page Not Found: Assets/css
+ERROR - 2019-08-23 13:29:44 --> 404 Page Not Found: Assets/js
+ERROR - 2019-08-23 13:30:05 --> 404 Page Not Found: Assets/css
+ERROR - 2019-08-23 13:30:10 --> 404 Page Not Found: Assets/js
+ERROR - 2019-08-23 13:30:10 --> 404 Page Not Found: Assets/img
+ERROR - 2019-08-23 13:35:13 --> 404 Page Not Found: Assets/css
+ERROR - 2019-08-23 13:35:14 --> 404 Page Not Found: Assets/js
+ERROR - 2019-08-23 13:35:15 --> 404 Page Not Found: Assets/img
+ERROR - 2019-08-23 13:38:01 --> 404 Page Not Found: Assets/css
+ERROR - 2019-08-23 13:38:01 --> 404 Page Not Found: Assets/js
+ERROR - 2019-08-23 13:38:02 --> 404 Page Not Found: Assets/img
