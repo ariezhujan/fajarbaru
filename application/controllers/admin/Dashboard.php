@@ -9,6 +9,7 @@ class Dashboard extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->database();
+		$this->load->model('M_data');
 		$this->load->library(['ion_auth', 'form_validation']);
 		$this->load->helper(['url', 'language']);
 
@@ -45,6 +46,11 @@ class Dashboard extends CI_Controller {
 			//USAGE NOTE - you can do more complicated queries like this
 			//$this->data['users'] = $this->ion_auth->where('field', 'value')->users()->result();
 			//$data['user'] = $user = $this->ion_auth->user()->row();
+			foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+			}
+			$data['login_attempts'] = $this->M_data->tampil_data($user->id,'login_attempts')->result();
 			$data['content'] = 'admin/dashboard';
 			$this->load->view('admin/master', $data);
 		}

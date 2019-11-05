@@ -657,7 +657,7 @@ class Auth extends CI_Controller
 				}
 
 				// Only allow updating groups if user is admin
-				if ($this->ion_auth->is_admin())
+				/*if ($this->ion_auth->is_admin())
 				{
 					// Update the groups user belongs to
 					$this->ion_auth->remove_from_group('', $id);
@@ -671,7 +671,7 @@ class Auth extends CI_Controller
 						}
 
 					}
-				}
+				}*/
 
 				// check to see if we are updating the user
 				if ($this->ion_auth->update($user->id, $data))

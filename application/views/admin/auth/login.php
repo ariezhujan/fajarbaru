@@ -50,11 +50,14 @@
             <?php echo form_input($password);?><input type="hidden" value="<?php echo date("Y-m-d H:i:s") ?>" name="tgl" placeholder="inpyt"></p>
 						<span class="focus-input100"></span>
 					</div>
+					<br>
+					<br>
+					<br>
 					
-					<div class="container-login100-form-btn">
-            <p><?php echo lang('login_remember_label', 'remember');?>&nbsp;&nbsp;
-            <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?></p>
-          </div>
+					<!--<div class="container-login100-form-btn">
+            <p><?php //echo lang('login_remember_label', 'remember');?>&nbsp;&nbsp;
+            <?php //echo form_checkbox('remember', '1', FALSE, 'id="remember"');?></p>
+          </div>-->
 
           <div class="container-login100-form-btn">
 						<button class="login100-form-btn">
@@ -62,14 +65,15 @@
 						</button>
 					</div>
 
-					<div class="w-full text-center p-t-27 p-b-239">
-						<span class="txt1">
-						</span>
+			<!--<div class="w-full text-center p-t-27 p-b-239">
+				<span class="txt1">
+				</span>
 
-						<a href="#" class="txt2">
-            <p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
-						</a>
-					</div>
+				<a href="#" class="txt2">
+				<p><a href="forgot_password"><?php //echo lang('login_forgot_password');?></a></p>
+				</a>
+			</div>-->
+
           <?php echo form_close();?>
           </span>
 

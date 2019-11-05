@@ -44,7 +44,8 @@
                                     <?php echo form_input($phone);?>          
                               </div>
                         </div>
-                        <div class="form-group row showcase_row_area">
+
+                       <!-- <div class="form-group row showcase_row_area">
                               <div class="col-md-3 showcase_text_area">
                                     <?php echo lang('edit_user_password_label', 'password');?>
                               </div>
@@ -59,13 +60,13 @@
                               <div class="col-md-9 showcase_content_area">
                                     <?php echo form_input($password_confirm);?>
                               </div>
-                        </div>
+                        </div>-->
                         <div class="form-group row showcase_row_area">
                         <div class="col-md-3 showcase_text_area">
                               <?php if ($this->ion_auth->is_admin()): ?>
-                              <?php echo lang('edit_user_groups_heading');?>
+                              <!--<?php echo lang('edit_user_groups_heading');?>-->
                         </div>
-                        <div class="col-md-9 showcase_content_area">
+                        <!--<div class="col-md-9 showcase_content_area">
                               <?php foreach ($groups as $group):?>
                               <label class="checkbox">
                               <?php
@@ -85,7 +86,7 @@
                               <?php endforeach?>
 
                               <?php endif ?>
-                        </div>
+                        </div>-->
                         <div class="col-md-9 showcase_content_area">
                               <?php echo form_hidden('id', $user->id);?>
                               <?php echo form_hidden($csrf); ?>

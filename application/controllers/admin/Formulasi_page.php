@@ -47,6 +47,18 @@ class Formulasi_page extends CI_Controller {
 			{
 				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
+			$data['formulasi1'] = $this->M_data->tampil_to_form_ASC($user->id,5,1,'formulasi1')->result();
+			$data['formulasi2'] = $this->M_data->tampil_to_form_ASC($user->id,5,2,'formulasi2')->result();
+			$data['formulasi3'] = $this->M_data->tampil_to_form_ASC($user->id,5,3,'formulasi3')->result();
+			$data['formulasi4'] = $this->M_data->tampil_to_form_ASC($user->id,5,4,'formulasi4')->result();
+			$data['formulasi5'] = $this->M_data->tampil_to_form_ASC($user->id,5,5,'formulasi5')->result();
+			$data['formulasi6'] = $this->M_data->tampil_to_form_ASC($user->id,5,6,'formulasi6')->result();
+			$data['formulasi7'] = $this->M_data->tampil_to_form_ASC($user->id,5,7,'formulasi7')->result();
+			$data['formulasi8'] = $this->M_data->tampil_to_form_ASC($user->id,5,8,'formulasi8')->result();
+			$data['formulasi9left'] = $this->M_data->tampil_to_form_ASC($user->id,5,9,'formulasi9left')->result();
+			$data['formulasi9right'] = $this->M_data->tampil_to_form_ASC($user->id,5,9,'formulasi9right')->result();
+			$data['formulasi10left'] = $this->M_data->tampil_to_form_ASC($user->id,5,10,'formulasi10left')->result();
+			$data['formulasi10right'] = $this->M_data->tampil_to_form_ASC($user->id,5,10,'formulasi10right')->result();
 			$data['content'] = 'admin/formulasi_page';
 			$this->load->view('admin/master', $data);
 		}
@@ -251,6 +263,198 @@ class Formulasi_page extends CI_Controller {
 					$data['content'] = 'admin/formulasi/formulasi6';
 					$this->load->view('admin/master', $data);
 				}
+			}
+			elseif ($this->uri->segment(4) == 'formulasi7' ) {
+			if (!$this->ion_auth->logged_in())
+				{
+					// redirect them to the login page
+					redirect('admin/auth/login', 'refresh');
+				}
+			else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
+				{
+					// redirect them to the home page because they must be an administrator to view this
+					show_error('You must be an administrator to view this page.');
+				}
+			else
+				{
+					$this->data['title'] = $this->lang->line('index_heading');
+					
+					// set the flash data error message if there is one
+					$data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+
+					//list the users
+					$data['users'] = $this->ion_auth->users()->result();			
+					//USAGE NOTE - you can do more complicated queries like this
+					//$this->data['users'] = $this->ion_auth->where('field', 'value')->users()->result();
+					
+					foreach ($data['users'] as $k => $user)
+					{
+						$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+					}
+					$data['formulasi7'] = $this->M_data->tampil_to_form($user->id,5,7,'formulasi7')->result();
+					$data['content'] = 'admin/formulasi/formulasi7';
+					$this->load->view('admin/master', $data);
+				}
+			}
+			elseif ($this->uri->segment(4) == 'formulasi8' ) {
+			if (!$this->ion_auth->logged_in())
+				{
+					// redirect them to the login page
+					redirect('admin/auth/login', 'refresh');
+				}
+			else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
+				{
+					// redirect them to the home page because they must be an administrator to view this
+					show_error('You must be an administrator to view this page.');
+				}
+			else
+				{
+					$this->data['title'] = $this->lang->line('index_heading');
+					
+					// set the flash data error message if there is one
+					$data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+
+					//list the users
+					$data['users'] = $this->ion_auth->users()->result();			
+					//USAGE NOTE - you can do more complicated queries like this
+					//$this->data['users'] = $this->ion_auth->where('field', 'value')->users()->result();
+					
+					foreach ($data['users'] as $k => $user)
+					{
+						$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+					}
+					$data['formulasi8'] = $this->M_data->tampil_to_form($user->id,5,8,'formulasi8')->result();
+					$data['content'] = 'admin/formulasi/formulasi8';
+					$this->load->view('admin/master', $data);
+				}
+			}
+			elseif ($this->uri->segment(4) == 'formulasi9left' ) {
+			if (!$this->ion_auth->logged_in())
+				{
+					// redirect them to the login page
+					redirect('admin/auth/login', 'refresh');
+				}
+			else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
+				{
+					// redirect them to the home page because they must be an administrator to view this
+					show_error('You must be an administrator to view this page.');
+				}
+			else
+				{
+					$this->data['title'] = $this->lang->line('index_heading');
+					
+					// set the flash data error message if there is one
+					$data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+
+					//list the users
+					$data['users'] = $this->ion_auth->users()->result();			
+					//USAGE NOTE - you can do more complicated queries like this
+					//$this->data['users'] = $this->ion_auth->where('field', 'value')->users()->result();
+					
+					foreach ($data['users'] as $k => $user)
+					{
+						$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+					}
+					$data['formulasi9left'] = $this->M_data->tampil_to_form($user->id,5,9,'formulasi9left')->result();
+					$data['content'] = 'admin/formulasi/formulasi9left';
+					$this->load->view('admin/master', $data);
+				}
+			}
+			elseif ($this->uri->segment(4) == 'formulasi9right' ) {
+			if (!$this->ion_auth->logged_in())
+				{
+					// redirect them to the login page
+					redirect('admin/auth/login', 'refresh');
+				}
+			else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
+				{
+					// redirect them to the home page because they must be an administrator to view this
+					show_error('You must be an administrator to view this page.');
+				}
+			else
+				{
+					$this->data['title'] = $this->lang->line('index_heading');
+					
+					// set the flash data error message if there is one
+					$data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+
+					//list the users
+					$data['users'] = $this->ion_auth->users()->result();			
+					//USAGE NOTE - you can do more complicated queries like this
+					//$this->data['users'] = $this->ion_auth->where('field', 'value')->users()->result();
+					
+					foreach ($data['users'] as $k => $user)
+					{
+						$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+					}
+					$data['formulasi9right'] = $this->M_data->tampil_to_form($user->id,5,9,'formulasi9right')->result();
+					$data['content'] = 'admin/formulasi/formulasi9right';
+					$this->load->view('admin/master', $data);
+				}
+			}
+			elseif ($this->uri->segment(4) == 'formulasi10left' ) {
+			if (!$this->ion_auth->logged_in())
+				{
+					// redirect them to the login page
+					redirect('admin/auth/login', 'refresh');
+				}
+			else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
+				{
+					// redirect them to the home page because they must be an administrator to view this
+					show_error('You must be an administrator to view this page.');
+				}
+			else
+				{
+					$this->data['title'] = $this->lang->line('index_heading');
+					
+					// set the flash data error message if there is one
+					$data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+
+					//list the users
+					$data['users'] = $this->ion_auth->users()->result();			
+					//USAGE NOTE - you can do more complicated queries like this
+					//$this->data['users'] = $this->ion_auth->where('field', 'value')->users()->result();
+					
+					foreach ($data['users'] as $k => $user)
+					{
+						$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+					}
+					$data['formulasi10left'] = $this->M_data->tampil_to_form($user->id,5,10,'formulasi10left')->result();
+					$data['content'] = 'admin/formulasi/formulasi10left';
+					$this->load->view('admin/master', $data);
+				}
+			}
+			elseif ($this->uri->segment(4) == 'formulasi10right' ) {
+			if (!$this->ion_auth->logged_in())
+				{
+					// redirect them to the login page
+					redirect('admin/auth/login', 'refresh');
+				}
+			else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
+				{
+					// redirect them to the home page because they must be an administrator to view this
+					show_error('You must be an administrator to view this page.');
+				}
+			else
+				{
+					$this->data['title'] = $this->lang->line('index_heading');
+					
+					// set the flash data error message if there is one
+					$data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+
+					//list the users
+					$data['users'] = $this->ion_auth->users()->result();			
+					//USAGE NOTE - you can do more complicated queries like this
+					//$this->data['users'] = $this->ion_auth->where('field', 'value')->users()->result();
+					
+					foreach ($data['users'] as $k => $user)
+					{
+						$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+					}
+					$data['formulasi10right'] = $this->M_data->tampil_to_form($user->id,5,10,'formulasi10right')->result();
+					$data['content'] = 'admin/formulasi/formulasi10right';
+					$this->load->view('admin/master', $data);
+				}
 			}else{
 			echo "Fail!";
 			}
@@ -321,9 +525,8 @@ class Formulasi_page extends CI_Controller {
 			if ($user->id) {
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
 					$field = $this->input->post('page');
-					if(!empty($field)){
-		    		for ($i=1; $i <= $file ; $i++) { 
-		    			$file1 = time().$i.$_FILES["field2".$i]['name'];
+					if(!empty($field)){ 
+		    			$file1 = time().$_FILES["field2"]['name'];
 					    $config['upload_path']          = './upload/formulasi/';
 					    $config['allowed_types']        = 'gif|jpg|png';
 					    $config['file_name']            = $file1;
@@ -331,26 +534,24 @@ class Formulasi_page extends CI_Controller {
 					    $this->load->library('upload', $config);
 					    $this->upload->initialize($config); 
 					     //$file1 = $_FILES["field2".$i]["name"];
-						   	if ( (!$this->upload->do_upload('field2'.$i)) )
-				                {
-				                    $error = array('error' => $this->upload->display_errors());
-				                    var_dump($error); //$this->load->view('upload_form', $error);
-				                }
-			                else
+					   	if ( (!$this->upload->do_upload('field2')) )
 			                {
-		                        $data = [
-									'id_user' => $this->ion_auth->get_user_id(),
-									'id_page' => $this->input->post('page'),
-									'id_sub_page' => $this->input->post('sub'),
-									'text'  => $this->input->post('field1'.$i),
-									'file'  => $file1,
-									'create_at' => date("Y-m-d H:i:s"),
-									];
-									$this->M_data->input_data($data,'formulasi1');
-									$this->session->set_flashdata('data','Data baru berhasil di input..');
+			                    $error = array('error' => $this->upload->display_errors());
+			                    var_dump($error); //$this->load->view('upload_form', $error);
 			                }
-			    
-					}
+		                else
+		                {
+	                        $data = [
+								'id_user' => $this->ion_auth->get_user_id(),
+								'id_page' => $this->input->post('page'),
+								'id_sub_page' => $this->input->post('sub'),
+								'text'  => $this->input->post('field1'),
+								'file'  => $file1,
+								'create_at' => date("Y-m-d H:i:s"),
+								];
+								$this->M_data->input_data($data,'formulasi1');
+								$this->session->set_flashdata('data','Data baru berhasil di input..');
+		                }
 				 }else{
 			              $this->session->set_flashdata('data','Data yang Anda memasukan kosong..');
 			      }
@@ -754,7 +955,142 @@ class Formulasi_page extends CI_Controller {
 
 
 
-	public function tangkimixer4(){
+	public function formulasi5(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			$data['users'] = $this->ion_auth->users()->result();
+			foreach ($data['users'] as $k => $user)
+				{
+					$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+	            }
+        $file = $this->input->post("field");
+			if ($user->id) {
+				$this->session->set_flashdata('message', $this->ion_auth->messages());
+					$field = $this->input->post('page');
+					if(!empty($field)){
+		    		for ($i=1; $i <= $file ; $i++) { 
+		    			$file1 = time().$i.$_FILES["field2".$i]['name'];
+					    $config['upload_path']          = './upload/formulasi/';
+					    $config['allowed_types']        = 'gif|jpg|png';
+					    $config['file_name']            = $file1;
+					    $config['max_size']             = 9024; // 1MB
+					    $this->load->library('upload', $config);
+					    $this->upload->initialize($config); 
+					     //$file1 = $_FILES["field2".$i]["name"];
+						   	if ( (!$this->upload->do_upload('field2'.$i)) )
+				                {
+				                    $error = array('error' => $this->upload->display_errors());
+				                    var_dump($error); //$this->load->view('upload_form', $error);
+				                }
+			                else
+			                {
+		                        $data = [
+									'id_user' => $this->ion_auth->get_user_id(),
+									'id_page' => $this->input->post('page'),
+									'id_sub_page' => $this->input->post('sub'),
+									'file'  => $file1,
+									'create_at' => date("Y-m-d H:i:s"),
+									];
+									$this->M_data->input_data($data,'formulasi5');
+									$this->session->set_flashdata('data','Data baru berhasil di input..');
+										
+			                }
+			    
+					}
+				 }else{
+			              $this->session->set_flashdata('data','Data yang Anda memasukan kosong..');
+			      }
+				
+					redirect('admin/formulasi_page/action/formulasi5/', 'refresh');
+				
+			}else {
+				echo "FALSE";
+			}
+		}else {
+			echo "FALSE";
+		}
+		
+	}
+
+	public function formulasi5_edit(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+			$id = $this->input->post('id');
+			    $file1 = time().$_FILES["field2"]['name'];
+			    $config['upload_path']          = './upload/formulasi/';
+			    $config['allowed_types']        = 'gif|jpg|png';
+			    $config['file_name']            = $file1;
+			    $config['max_size']             = 9024; // 1MB
+			    $this->load->library('upload', $config);
+			    $this->upload->initialize($config); 
+			   	if ( (!$this->upload->do_upload('field2')) )
+	                {
+	                    $error = array('error' => $this->upload->display_errors());
+	                    var_dump($error); //$this->load->view('upload_form', $error);
+	                }
+	                else
+	                {
+	                    $data = [
+							'file'  => $file1,
+							'update_at' => date("Y-m-d H:i:s"),
+							];
+							$input = $this->input->post("id");
+							$data1['formulasi5'] = $this->M_data->tampil_data_controller($input,'formulasi5')->result();
+					        foreach ($data1['formulasi5'] as $k => $file)
+							{
+								$data1['formulasi5'][$k]= $this->M_data->tampil_data_controller($input,'formulasi5')->result();
+				            }
+				            unlink("./upload/formulasi/$file->file");
+							$this->M_data->update_data($id,$data,'formulasi5');
+							$this->session->set_flashdata('data','Update data berhasil..');		
+	                }
+				redirect('admin/formulasi_page/action/formulasi5/', 'refresh');
+				
+			}else {
+				echo "FALSE";
+			}
+		}
+
+
+		public function formulasi5_remove(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			//echo $user->id;
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+			$input = $this->input->get("id");
+			$data1['formulasi5'] = $this->M_data->tampil_data_controller($input,'formulasi5')->result();
+	        foreach ($data1['formulasi5'] as $k => $file)
+			{
+				$data1['formulasi5'][$k]= $this->M_data->tampil_data_controller($input,'formulasi5')->result();
+            }
+				if ($this->M_data->tampil_to_form($user->id,5,5,'formulasi5')->result()){
+						$where = $input;
+						unlink("./upload/formulasi/$file->file");
+						$this->M_data->hapus_data($where,'formulasi5');
+						$this->session->set_flashdata('data','Hapus data berhasil..');
+				}
+				redirect('admin/formulasi_page/action/formulasi5/', 'refresh');
+		} else {
+			echo "Fail !!";
+		}
+	}
+
+
+
+	public function formulasi6(){
 		$data['users'] = $this->ion_auth->users()->result();
 		foreach ($data['users'] as $k => $user)
 			{
@@ -780,7 +1116,7 @@ class Formulasi_page extends CI_Controller {
 							'text'  =>  $this->input->post('field1')[$i],
 							'create_at' => date("Y-m-d H:i:s"),
 							];
-							$this->M_data->input_data($data,'tangkimixer4');
+							$this->M_data->input_data($data,'formulasi6');
 							$this->session->set_flashdata('data','Data baru berhasil di input..');
 			    			//echo $this->input->post('field1')[$i];
 					}
@@ -788,7 +1124,7 @@ class Formulasi_page extends CI_Controller {
 			              $this->session->set_flashdata('data','Data yang Anda memasukan kosong..');
 			      }
 				
-					redirect('admin/tangkimixer_page/action/tangkimixer4/', 'refresh');
+					redirect('admin/formulasi_page/action/formulasi6/', 'refresh');
 				
 			}else {
 				echo "FALSE";
@@ -799,7 +1135,7 @@ class Formulasi_page extends CI_Controller {
 	}
 
 
-	public function tangkimixer4_edit(){
+	public function formulasi6_edit(){
 		$data['users'] = $this->ion_auth->users()->result();
 		foreach ($data['users'] as $k => $user)
 			{
@@ -812,16 +1148,16 @@ class Formulasi_page extends CI_Controller {
 					'text'  =>  $this->input->post('field1'),
 					'update_at' => date("Y-m-d H:i:s"),
 					];
-					$this->M_data->update_data($id,$data,'tangkimixer4');
+					$this->M_data->update_data($id,$data,'formulasi6');
 					$this->session->set_flashdata('data','Update data berhasil..');
-					redirect('admin/tangkimixer_page/action/tangkimixer4/', 'refresh');
+					redirect('admin/formulasi_page/action/formulasi6/', 'refresh');
 				
 			}else {
 				echo "FALSE";
 			}
 		}
 
-		public function tangkimixer4_remove(){
+		public function formulasi6_remove(){
 		$data['users'] = $this->ion_auth->users()->result();
 		foreach ($data['users'] as $k => $user)
 			{
@@ -831,12 +1167,12 @@ class Formulasi_page extends CI_Controller {
 			//echo $user->id;
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
 			$input = $this->input->get("id");
-				if ($this->M_data->tampil_to_form($user->id,4,4,'tangkimixer4')->result()){
+				if ($this->M_data->tampil_to_form($user->id,5,6,'formulasi6')->result()){
 						$where = $input;
-						$this->M_data->hapus_data($where,'tangkimixer4');
+						$this->M_data->hapus_data($where,'formulasi6');
 						$this->session->set_flashdata('data','Hapus data berhasil..');
 				}
-				redirect('admin/tangkimixer_page/action/tangkimixer4/', 'refresh');
+				redirect('admin/formulasi_page/action/formulasi6/', 'refresh');
 		} else {
 			echo "Fail !!";
 		}
@@ -844,56 +1180,41 @@ class Formulasi_page extends CI_Controller {
 
 
 
-
-	public function tangkimixer5(){
+	public function formulasi7(){
 		$data['users'] = $this->ion_auth->users()->result();
 		foreach ($data['users'] as $k => $user)
 			{
 				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
             }
-			if ($user->id) {
-				$data['users'] = $this->ion_auth->users()->result();
-				foreach ($data['users'] as $k => $user)
-					{
-						$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
-		            }
-        	$file = $this->input->post("field");
-			if ($user->id) {
-				$this->session->set_flashdata('message', $this->ion_auth->messages());
-					$field = $this->input->post('page');
-					if(!empty($field)){
-		    		for ($i=1; $i <= $file ; $i++) { 
-		    			$file1 = time().$i.$_FILES["field2".$i]['name'];
-					    $config['upload_path']          = './upload/tangkimixer/';
-					    $config['allowed_types']        = 'gif|jpg|png';
-					    $config['file_name']            = $file1;
-					    $config['max_size']             = 9024; // 1MB
-					    $this->load->library('upload', $config);
-					    $this->upload->initialize($config); 
-					     //$file1 = $_FILES["field2".$i]["name"];
-						   	if ( (!$this->upload->do_upload('field2'.$i)) )
-				                {
-				                    $error = array('error' => $this->upload->display_errors());
-				                    var_dump($error); //$this->load->view('upload_form', $error);
-				                }
-			                else
-			                {
-		                        $data = [
-									'id_user' => $this->ion_auth->get_user_id(),
-									'id_page' => $this->input->post('page'),
-									'id_sub_page' => $this->input->post('sub'),
-									'file'  => $file1,
-									'create_at' => date("Y-m-d H:i:s"),
-									];
-									$this->M_data->input_data($data,'tangkimixer5');
-									$this->session->set_flashdata('data','Data baru berhasil di input..');
-			                }
-			    
+		if ($user->id) {
+			$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+        $file = $this->input->post("field");
+		if ($user->id) {
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+				$field = $this->input->post('page');
+				if(!empty($field)){
+		    		for ($i=0; $i < $file ; $i++) { 
+					   
+                        $data = [
+							'id_user' => $this->ion_auth->get_user_id(),
+							'id_page' => $this->input->post('page'),
+							'id_sub_page' => $this->input->post('sub'),
+							'text'  =>  $this->input->post('field1')[$i],
+							'create_at' => date("Y-m-d H:i:s"),
+							];
+							$this->M_data->input_data($data,'formulasi7');
+							$this->session->set_flashdata('data','Data baru berhasil di input..');
+			    			//echo $this->input->post('field1')[$i];
 					}
 				 }else{
 			              $this->session->set_flashdata('data','Data yang Anda memasukan kosong..');
 			      }
-					redirect('admin/tangkimixer_page/action/tangkimixer5/', 'refresh');
+				
+					redirect('admin/formulasi_page/action/formulasi7/', 'refresh');
 				
 			}else {
 				echo "FALSE";
@@ -903,7 +1224,8 @@ class Formulasi_page extends CI_Controller {
 		}
 	}
 
-	public function tangkimixer5_edit(){
+
+	public function formulasi7_edit(){
 		$data['users'] = $this->ion_auth->users()->result();
 		foreach ($data['users'] as $k => $user)
 			{
@@ -912,43 +1234,20 @@ class Formulasi_page extends CI_Controller {
 		if ($user->id) {
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
 			$id = $this->input->post('id');
-			    $file1 = time().$_FILES["field2"]['name'];
-			    $config['upload_path']          = './upload/tangkimixer/';
-			    $config['allowed_types']        = 'gif|jpg|png';
-			    $config['file_name']            = $file1;
-			    $config['max_size']             = 9024; // 1MB
-			    $this->load->library('upload', $config);
-			    $this->upload->initialize($config); 
-			   	if ( (!$this->upload->do_upload('field2')) )
-	                {
-	                    $error = array('error' => $this->upload->display_errors());
-	                    var_dump($error); //$this->load->view('upload_form', $error);
-	                }
-	                else
-	                {
-	                        $data = [
-								'file'  => $file1,
-								'update_at' => date("Y-m-d H:i:s"),
-								];
-								$input = $this->input->post("id");
-								$data1['tangkimixer5'] = $this->M_data->tampil_data_controller($input,'tangkimixer5')->result();
-						        foreach ($data1['tangkimixer5'] as $k => $file)
-								{
-									$data1['tangkimixer5'][$k]= $this->M_data->tampil_data_controller($input,'tangkimixer5')->result();
-					            }
-					            unlink("./upload/tangkimixer/$file->file");
-								$this->M_data->update_data($id,$data,'tangkimixer5');
-								$this->session->set_flashdata('data','Update data berhasil..');
-								
-	                }
-			redirect('admin/tangkimixer_page/action/tangkimixer5/', 'refresh');
+                $data = [
+					'text'  =>  $this->input->post('field1'),
+					'update_at' => date("Y-m-d H:i:s"),
+					];
+					$this->M_data->update_data($id,$data,'formulasi7');
+					$this->session->set_flashdata('data','Update data berhasil..');
+					redirect('admin/formulasi_page/action/formulasi7/', 'refresh');
 				
 			}else {
 				echo "FALSE";
 			}
 		}
 
-		public function tangkimixer5_remove(){
+		public function formulasi7_remove(){
 		$data['users'] = $this->ion_auth->users()->result();
 		foreach ($data['users'] as $k => $user)
 			{
@@ -958,159 +1257,643 @@ class Formulasi_page extends CI_Controller {
 			//echo $user->id;
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
 			$input = $this->input->get("id");
-			$data1['tangkimixer5'] = $this->M_data->tampil_data_controller($input,'tangkimixer5')->result();
-	        foreach ($data1['tangkimixer5'] as $k => $file)
-			{
-				$data1['tangkimixer5'][$k]= $this->M_data->tampil_data_controller($input,'tangkimixer5')->result();
-            }
-				if ($this->M_data->tampil_to_form($user->id,4,5,'tangkimixer5')->result()){
+				if ($this->M_data->tampil_to_form($user->id,5,7,'formulasi7')->result()){
 						$where = $input;
-						unlink("./upload/tangkimixer/$file->file");
-						$this->M_data->hapus_data($where,'tangkimixer5');
+						$this->M_data->hapus_data($where,'formulasi7');
 						$this->session->set_flashdata('data','Hapus data berhasil..');
 				}
-				redirect('admin/tangkimixer_page/action/tangkimixer5/', 'refresh');
+				redirect('admin/formulasi_page/action/formulasi7/', 'refresh');
 		} else {
 			echo "Fail !!";
 		}
 	}
-
-
-
-public function tangkimixer6(){
-		$data['users'] = $this->ion_auth->users()->result();
-		foreach ($data['users'] as $k => $user)
-			{
-				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
-            }
-			if ($user->id) {
-				$data['users'] = $this->ion_auth->users()->result();
-				foreach ($data['users'] as $k => $user)
-					{
-						$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
-		            }
-        	$file = $this->input->post("field");
-			if ($user->id) {
-				$this->session->set_flashdata('message', $this->ion_auth->messages());
-					$field = $this->input->post('page');
-					if(!empty($field)){
-		    		for ($i=1; $i <= $file ; $i++) { 
-		    			$file1 = time().$i.$_FILES["field2".$i]['name'];
-					    $config['upload_path']          = './upload/tangkimixer/';
-					    $config['allowed_types']        = 'gif|jpg|png';
-					    $config['file_name']            = $file1;
-					    $config['max_size']             = 9024; // 1MB
-					    $this->load->library('upload', $config);
-					    $this->upload->initialize($config); 
-					     //$file1 = $_FILES["field2".$i]["name"];
-						   	if ( (!$this->upload->do_upload('field2'.$i)) )
-				                {
-				                    $error = array('error' => $this->upload->display_errors());
-				                    var_dump($error); //$this->load->view('upload_form', $error);
-				                }
-			                else
-			                {
-		                        $data = [
-									'id_user' => $this->ion_auth->get_user_id(),
-									'id_page' => $this->input->post('page'),
-									'id_sub_page' => $this->input->post('sub'),
-									'file'  => $file1,
-									'create_at' => date("Y-m-d H:i:s"),
-									];
-									$this->M_data->input_data($data,'tangkimixer6');
-									$this->session->set_flashdata('data','Data baru berhasil di input..');
-			                }
-			    
-					}
-				 }else{
-			              $this->session->set_flashdata('data','Data yang Anda memasukan kosong..');
-			      }
-					redirect('admin/tangkimixer_page/action/tangkimixer6/', 'refresh');
-				
-			}else {
-				echo "FALSE";
-			}
-		}else {
-			echo "FALSE";
-		}
-	}
-
-	public function tangkimixer6_edit(){
-		$data['users'] = $this->ion_auth->users()->result();
-		foreach ($data['users'] as $k => $user)
-			{
-				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
-            }
-		if ($user->id) {
-			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			$id = $this->input->post('id');
-			    $file1 = time().$_FILES["field2"]['name'];
-			    $config['upload_path']          = './upload/tangkimixer/';
-			    $config['allowed_types']        = 'gif|jpg|png';
-			    $config['file_name']            = $file1;
-			    $config['max_size']             = 9024; // 1MB
-			    $this->load->library('upload', $config);
-			    $this->upload->initialize($config); 
-			   	if ( (!$this->upload->do_upload('field2')) )
-	                {
-	                    $error = array('error' => $this->upload->display_errors());
-	                    var_dump($error); //$this->load->view('upload_form', $error);
-	                }
-	                else
-	                {
-	                        $data = [
-								'file'  => $file1,
-								'update_at' => date("Y-m-d H:i:s"),
-								];
-								$input = $this->input->post("id");
-								$data1['tangkimixer6'] = $this->M_data->tampil_data_controller($input,'tangkimixer6')->result();
-						        foreach ($data1['tangkimixer6'] as $k => $file)
-								{
-									$data1['tangkimixer6'][$k]= $this->M_data->tampil_data_controller($input,'tangkimixer6')->result();
-					            }
-					            unlink("./upload/tangkimixer/$file->file");
-								$this->M_data->update_data($id,$data,'tangkimixer6');
-								$this->session->set_flashdata('data','Update data berhasil..');
-								
-	                }
-			redirect('admin/tangkimixer_page/action/tangkimixer6/', 'refresh');
-				
-			}else {
-				echo "FALSE";
-			}
-		}
-
-		public function tangkimixer6_remove(){
-		$data['users'] = $this->ion_auth->users()->result();
-		foreach ($data['users'] as $k => $user)
-			{
-				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
-            }
-		if ($user->id) {
-			//echo $user->id;
-			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			$input = $this->input->get("id");
-			$data1['tangkimixer6'] = $this->M_data->tampil_data_controller($input,'tangkimixer6')->result();
-	        foreach ($data1['tangkimixer6'] as $k => $file)
-			{
-				$data1['tangkimixer6'][$k]= $this->M_data->tampil_data_controller($input,'tangkimixer6')->result();
-            }
-				if ($this->M_data->tampil_to_form($user->id,4,6,'tangkimixer6')->result()){
-						$where = $input;
-						unlink("./upload/tangkimixer/$file->file");
-						$this->M_data->hapus_data($where,'tangkimixer6');
-						$this->session->set_flashdata('data','Hapus data berhasil..');
-				}
-				redirect('admin/tangkimixer_page/action/tangkimixer6/', 'refresh');
-		} else {
-			echo "Fail !!";
-		}
-	}
-
 	
+
+	public function formulasi8(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+        $file = $this->input->post("field");
+		if ($user->id) {
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+				$field = $this->input->post('page');
+				if(!empty($field)){
+		    		for ($i=0; $i < $file ; $i++) { 
+					   
+                        $data = [
+							'id_user' => $this->ion_auth->get_user_id(),
+							'id_page' => $this->input->post('page'),
+							'id_sub_page' => $this->input->post('sub'),
+							'text'  =>  $this->input->post('field1')[$i],
+							'create_at' => date("Y-m-d H:i:s"),
+							];
+							$this->M_data->input_data($data,'formulasi8');
+							$this->session->set_flashdata('data','Data baru berhasil di input..');
+			    			//echo $this->input->post('field1')[$i];
+					}
+				 }else{
+			              $this->session->set_flashdata('data','Data yang Anda memasukan kosong..');
+			      }
+				
+					redirect('admin/formulasi_page/action/formulasi8/', 'refresh');
+				
+			}else {
+				echo "FALSE";
+			}
+		}else {
+			echo "FALSE";
+		}
+	}
+
+
+	public function formulasi8_edit(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+			$id = $this->input->post('id');
+                $data = [
+					'text'  =>  $this->input->post('field1'),
+					'update_at' => date("Y-m-d H:i:s"),
+					];
+					$this->M_data->update_data($id,$data,'formulasi8');
+					$this->session->set_flashdata('data','Update data berhasil..');
+					redirect('admin/formulasi_page/action/formulasi8/', 'refresh');
+				
+			}else {
+				echo "FALSE";
+			}
+		}
+
+		public function formulasi8_remove(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			//echo $user->id;
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+			$input = $this->input->get("id");
+				if ($this->M_data->tampil_to_form($user->id,5,8,'formulasi8')->result()){
+						$where = $input;
+						$this->M_data->hapus_data($where,'formulasi8');
+						$this->session->set_flashdata('data','Hapus data berhasil..');
+				}
+				redirect('admin/formulasi_page/action/formulasi8/', 'refresh');
+		} else {
+			echo "Fail !!";
+		}
+	}
+
+
+	public function formulasi9left(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			$data['users'] = $this->ion_auth->users()->result();
+			foreach ($data['users'] as $k => $user)
+				{
+					$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+	            }
+        $file = $this->input->post("field");
+			if ($user->id) {
+				$this->session->set_flashdata('message', $this->ion_auth->messages());
+					$field = $this->input->post('page');
+					if(!empty($field)){
+		    		for ($i=1; $i <= $file ; $i++) { 
+		    			$file1 = time().$i.$_FILES["field2".$i]['name'];
+					    $config['upload_path']          = './upload/formulasi/';
+					    $config['allowed_types']        = 'gif|jpg|png';
+					    $config['file_name']            = $file1;
+					    $config['max_size']             = 9024; // 1MB
+					    $this->load->library('upload', $config);
+					    $this->upload->initialize($config); 
+					     //$file1 = $_FILES["field2".$i]["name"];
+						   	if ( (!$this->upload->do_upload('field2'.$i)) )
+				                {
+				                    $error = array('error' => $this->upload->display_errors());
+				                    var_dump($error); //$this->load->view('upload_form', $error);
+				                }
+			                else
+			                {
+		                        $data = [
+									'id_user' => $this->ion_auth->get_user_id(),
+									'id_page' => $this->input->post('page'),
+									'id_sub_page' => $this->input->post('sub'),
+									'file'  => $file1,
+									'create_at' => date("Y-m-d H:i:s"),
+									];
+									$this->M_data->input_data($data,'formulasi9left');
+									$this->session->set_flashdata('data','Data baru berhasil di input..');
+										
+			                }
+			    
+					}
+				 }else{
+			              $this->session->set_flashdata('data','Data yang Anda memasukan kosong..');
+			      }
+				
+					redirect('admin/formulasi_page/action/formulasi9left/', 'refresh');
+				
+			}else {
+				echo "FALSE";
+			}
+		}else {
+			echo "FALSE";
+		}
+		
+	}
+
+	public function formulasi9left_edit(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+			$id = $this->input->post('id');
+			    $file1 = time().$_FILES["field2"]['name'];
+			    $config['upload_path']          = './upload/formulasi/';
+			    $config['allowed_types']        = 'gif|jpg|png';
+			    $config['file_name']            = $file1;
+			    $config['max_size']             = 9024; // 1MB
+			    $this->load->library('upload', $config);
+			    $this->upload->initialize($config); 
+			   	if ( (!$this->upload->do_upload('field2')) )
+	                {
+	                    $error = array('error' => $this->upload->display_errors());
+	                    var_dump($error); //$this->load->view('upload_form', $error);
+	                }
+	                else
+	                {
+	                    $data = [
+							'file'  => $file1,
+							'update_at' => date("Y-m-d H:i:s"),
+							];
+							$input = $this->input->post("id");
+							$data1['formulasi9left'] = $this->M_data->tampil_data_controller($input,'formulasi9left')->result();
+					        foreach ($data1['formulasi9left'] as $k => $file)
+							{
+								$data1['formulasi9left'][$k]= $this->M_data->tampil_data_controller($input,'formulasi9left')->result();
+				            }
+				            unlink("./upload/formulasi/$file->file");
+							$this->M_data->update_data($id,$data,'formulasi9left');
+							$this->session->set_flashdata('data','Update data berhasil..');		
+	                }
+				redirect('admin/formulasi_page/action/formulasi9left/', 'refresh');
+				
+			}else {
+				echo "FALSE";
+			}
+		}
+
+
+		public function formulasi9left_remove(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			//echo $user->id;
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+			$input = $this->input->get("id");
+			$data1['formulasi9left'] = $this->M_data->tampil_data_controller($input,'formulasi9left')->result();
+	        foreach ($data1['formulasi9left'] as $k => $file)
+			{
+				$data1['formulasi9left'][$k]= $this->M_data->tampil_data_controller($input,'formulasi9left')->result();
+            }
+				if ($this->M_data->tampil_to_form($user->id,5,9,'formulasi9left')->result()){
+						$where = $input;
+						unlink("./upload/formulasi/$file->file");
+						$this->M_data->hapus_data($where,'formulasi9left');
+						$this->session->set_flashdata('data','Hapus data berhasil..');
+				}
+				redirect('admin/formulasi_page/action/formulasi9left/', 'refresh');
+		} else {
+			echo "Fail !!";
+		}
+	}
+
+	public function formulasi9right(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			$data['users'] = $this->ion_auth->users()->result();
+			foreach ($data['users'] as $k => $user)
+				{
+					$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+	            }
+        $file = $this->input->post("field");
+			if ($user->id) {
+				$this->session->set_flashdata('message', $this->ion_auth->messages());
+					$field = $this->input->post('page');
+					if(!empty($field)){
+		    		for ($i=1; $i <= $file ; $i++) { 
+		    			$file1 = time().$i.$_FILES["field2".$i]['name'];
+					    $config['upload_path']          = './upload/formulasi/';
+					    $config['allowed_types']        = 'gif|jpg|png';
+					    $config['file_name']            = $file1;
+					    $config['max_size']             = 9024; // 1MB
+					    $this->load->library('upload', $config);
+					    $this->upload->initialize($config); 
+					     //$file1 = $_FILES["field2".$i]["name"];
+						   	if ( (!$this->upload->do_upload('field2'.$i)) )
+				                {
+				                    $error = array('error' => $this->upload->display_errors());
+				                    var_dump($error); //$this->load->view('upload_form', $error);
+				                }
+			                else
+			                {
+		                        $data = [
+									'id_user' => $this->ion_auth->get_user_id(),
+									'id_page' => $this->input->post('page'),
+									'id_sub_page' => $this->input->post('sub'),
+									'file'  => $file1,
+									'create_at' => date("Y-m-d H:i:s"),
+									];
+									$this->M_data->input_data($data,'formulasi9right');
+									$this->session->set_flashdata('data','Data baru berhasil di input..');
+										
+			                }
+			    
+					}
+				 }else{
+			              $this->session->set_flashdata('data','Data yang Anda memasukan kosong..');
+			      }
+				
+					redirect('admin/formulasi_page/action/formulasi9right/', 'refresh');
+				
+			}else {
+				echo "FALSE";
+			}
+		}else {
+			echo "FALSE";
+		}
+		
+	}
+
+	public function formulasi9right_edit(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+			$id = $this->input->post('id');
+			    $file1 = time().$_FILES["field2"]['name'];
+			    $config['upload_path']          = './upload/formulasi/';
+			    $config['allowed_types']        = 'gif|jpg|png';
+			    $config['file_name']            = $file1;
+			    $config['max_size']             = 9024; // 1MB
+			    $this->load->library('upload', $config);
+			    $this->upload->initialize($config); 
+			   	if ( (!$this->upload->do_upload('field2')) )
+	                {
+	                    $error = array('error' => $this->upload->display_errors());
+	                    var_dump($error); //$this->load->view('upload_form', $error);
+	                }
+	                else
+	                {
+	                    $data = [
+							'file'  => $file1,
+							'update_at' => date("Y-m-d H:i:s"),
+							];
+							$input = $this->input->post("id");
+							$data1['formulasi9right'] = $this->M_data->tampil_data_controller($input,'formulasi9right')->result();
+					        foreach ($data1['formulasi9right'] as $k => $file)
+							{
+								$data1['formulasi9right'][$k]= $this->M_data->tampil_data_controller($input,'formulasi9right')->result();
+				            }
+				            unlink("./upload/formulasi/$file->file");
+							$this->M_data->update_data($id,$data,'formulasi9right');
+							$this->session->set_flashdata('data','Update data berhasil..');		
+	                }
+				redirect('admin/formulasi_page/action/formulasi9right/', 'refresh');
+				
+			}else {
+				echo "FALSE";
+			}
+		}
+
+
+		public function formulasi9right_remove(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			//echo $user->id;
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+			$input = $this->input->get("id");
+			$data1['formulasi9right'] = $this->M_data->tampil_data_controller($input,'formulasi9right')->result();
+	        foreach ($data1['formulasi9right'] as $k => $file)
+			{
+				$data1['formulasi9right'][$k]= $this->M_data->tampil_data_controller($input,'formulasi9right')->result();
+            }
+				if ($this->M_data->tampil_to_form($user->id,5,9,'formulasi9right')->result()){
+						$where = $input;
+						unlink("./upload/formulasi/$file->file");
+						$this->M_data->hapus_data($where,'formulasi9right');
+						$this->session->set_flashdata('data','Hapus data berhasil..');
+				}
+				redirect('admin/formulasi_page/action/formulasi9right/', 'refresh');
+		} else {
+			echo "Fail !!";
+		}
+	}
+
+
+	public function formulasi10left(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			$data['users'] = $this->ion_auth->users()->result();
+			foreach ($data['users'] as $k => $user)
+				{
+					$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+	            }
+        $file = $this->input->post("field");
+			if ($user->id) {
+				$this->session->set_flashdata('message', $this->ion_auth->messages());
+					$field = $this->input->post('page');
+					if(!empty($field)){
+		    		for ($i=1; $i <= $file ; $i++) { 
+		    			$file1 = time().$i.$_FILES["field2".$i]['name'];
+					    $config['upload_path']          = './upload/formulasi/';
+					    $config['allowed_types']        = 'gif|jpg|png';
+					    $config['file_name']            = $file1;
+					    $config['max_size']             = 9024; // 1MB
+					    $this->load->library('upload', $config);
+					    $this->upload->initialize($config); 
+					     //$file1 = $_FILES["field2".$i]["name"];
+						   	if ( (!$this->upload->do_upload('field2'.$i)) )
+				                {
+				                    $error = array('error' => $this->upload->display_errors());
+				                    var_dump($error); //$this->load->view('upload_form', $error);
+				                }
+			                else
+			                {
+		                        $data = [
+									'id_user' => $this->ion_auth->get_user_id(),
+									'id_page' => $this->input->post('page'),
+									'id_sub_page' => $this->input->post('sub'),
+									'file'  => $file1,
+									'create_at' => date("Y-m-d H:i:s"),
+									];
+									$this->M_data->input_data($data,'formulasi10left');
+									$this->session->set_flashdata('data','Data baru berhasil di input..');
+										
+			                }
+			    
+					}
+				 }else{
+			              $this->session->set_flashdata('data','Data yang Anda memasukan kosong..');
+			      }
+				
+					redirect('admin/formulasi_page/action/formulasi10left/', 'refresh');
+				
+			}else {
+				echo "FALSE";
+			}
+		}else {
+			echo "FALSE";
+		}
+		
+	}
+
+	public function formulasi10left_edit(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+			$id = $this->input->post('id');
+			    $file1 = time().$_FILES["field2"]['name'];
+			    $config['upload_path']          = './upload/formulasi/';
+			    $config['allowed_types']        = 'gif|jpg|png';
+			    $config['file_name']            = $file1;
+			    $config['max_size']             = 9024; // 1MB
+			    $this->load->library('upload', $config);
+			    $this->upload->initialize($config); 
+			   	if ( (!$this->upload->do_upload('field2')) )
+	                {
+	                    $error = array('error' => $this->upload->display_errors());
+	                    var_dump($error); //$this->load->view('upload_form', $error);
+	                }
+	                else
+	                {
+	                    $data = [
+							'file'  => $file1,
+							'update_at' => date("Y-m-d H:i:s"),
+							];
+							$input = $this->input->post("id");
+							$data1['formulasi10left'] = $this->M_data->tampil_data_controller($input,'formulasi10left')->result();
+					        foreach ($data1['formulasi10left'] as $k => $file)
+							{
+								$data1['formulasi10left'][$k]= $this->M_data->tampil_data_controller($input,'formulasi10left')->result();
+				            }
+				            unlink("./upload/formulasi/$file->file");
+							$this->M_data->update_data($id,$data,'formulasi10left');
+							$this->session->set_flashdata('data','Update data berhasil..');		
+	                }
+				redirect('admin/formulasi_page/action/formulasi10left/', 'refresh');
+				
+			}else {
+				echo "FALSE";
+			}
+		}
+
+
+		public function formulasi10left_remove(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			//echo $user->id;
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+			$input = $this->input->get("id");
+			$data1['formulasi10left'] = $this->M_data->tampil_data_controller($input,'formulasi10left')->result();
+	        foreach ($data1['formulasi10left'] as $k => $file)
+			{
+				$data1['formulasi10left'][$k]= $this->M_data->tampil_data_controller($input,'formulasi10left')->result();
+            }
+				if ($this->M_data->tampil_to_form($user->id,5,10,'formulasi10left')->result()){
+						$where = $input;
+						unlink("./upload/formulasi/$file->file");
+						$this->M_data->hapus_data($where,'formulasi10left');
+						$this->session->set_flashdata('data','Hapus data berhasil..');
+				}
+				redirect('admin/formulasi_page/action/formulasi10left/', 'refresh');
+		} else {
+			echo "Fail !!";
+		}
+	}
+
+
+	public function formulasi10right(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			$data['users'] = $this->ion_auth->users()->result();
+			foreach ($data['users'] as $k => $user)
+				{
+					$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+	            }
+        $file = $this->input->post("field");
+			if ($user->id) {
+				$this->session->set_flashdata('message', $this->ion_auth->messages());
+					$field = $this->input->post('page');
+					if(!empty($field)){
+		    		for ($i=1; $i <= $file ; $i++) { 
+		    			$file1 = time().$i.$_FILES["field2".$i]['name'];
+					    $config['upload_path']          = './upload/formulasi/';
+					    $config['allowed_types']        = 'gif|jpg|png';
+					    $config['file_name']            = $file1;
+					    $config['max_size']             = 9024; // 1MB
+					    $this->load->library('upload', $config);
+					    $this->upload->initialize($config); 
+					     //$file1 = $_FILES["field2".$i]["name"];
+						   	if ( (!$this->upload->do_upload('field2'.$i)) )
+				                {
+				                    $error = array('error' => $this->upload->display_errors());
+				                    var_dump($error); //$this->load->view('upload_form', $error);
+				                }
+			                else
+			                {
+		                        $data = [
+									'id_user' => $this->ion_auth->get_user_id(),
+									'id_page' => $this->input->post('page'),
+									'id_sub_page' => $this->input->post('sub'),
+									'file'  => $file1,
+									'create_at' => date("Y-m-d H:i:s"),
+									];
+									$this->M_data->input_data($data,'formulasi10right');
+									$this->session->set_flashdata('data','Data baru berhasil di input..');
+										
+			                }
+			    
+					}
+				 }else{
+			              $this->session->set_flashdata('data','Data yang Anda memasukan kosong..');
+			      }
+				
+					redirect('admin/formulasi_page/action/formulasi10right/', 'refresh');
+				
+			}else {
+				echo "FALSE";
+			}
+		}else {
+			echo "FALSE";
+		}
+		
+	}
+
+	public function formulasi10right_edit(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+			$id = $this->input->post('id');
+			    $file1 = time().$_FILES["field2"]['name'];
+			    $config['upload_path']          = './upload/formulasi/';
+			    $config['allowed_types']        = 'gif|jpg|png';
+			    $config['file_name']            = $file1;
+			    $config['max_size']             = 9024; // 1MB
+			    $this->load->library('upload', $config);
+			    $this->upload->initialize($config); 
+			   	if ( (!$this->upload->do_upload('field2')) )
+	                {
+	                    $error = array('error' => $this->upload->display_errors());
+	                    var_dump($error); //$this->load->view('upload_form', $error);
+	                }
+	                else
+	                {
+	                    $data = [
+							'file'  => $file1,
+							'update_at' => date("Y-m-d H:i:s"),
+							];
+							$input = $this->input->post("id");
+							$data1['formulasi10right'] = $this->M_data->tampil_data_controller($input,'formulasi10right')->result();
+					        foreach ($data1['formulasi10right'] as $k => $file)
+							{
+								$data1['formulasi10right'][$k]= $this->M_data->tampil_data_controller($input,'formulasi10right')->result();
+				            }
+				            unlink("./upload/formulasi/$file->file");
+							$this->M_data->update_data($id,$data,'formulasi10right');
+							$this->session->set_flashdata('data','Update data berhasil..');		
+	                }
+				redirect('admin/formulasi_page/action/formulasi10right/', 'refresh');
+				
+			}else {
+				echo "FALSE";
+			}
+		}
+
+
+		public function formulasi10right_remove(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			//echo $user->id;
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+			$input = $this->input->get("id");
+			$data1['formulasi10right'] = $this->M_data->tampil_data_controller($input,'formulasi10right')->result();
+	        foreach ($data1['formulasi10right'] as $k => $file)
+			{
+				$data1['formulasi10right'][$k]= $this->M_data->tampil_data_controller($input,'formulasi10right')->result();
+            }
+				if ($this->M_data->tampil_to_form($user->id,5,10,'formulasi10right')->result()){
+						$where = $input;
+						unlink("./upload/formulasi/$file->file");
+						$this->M_data->hapus_data($where,'formulasi10right');
+						$this->session->set_flashdata('data','Hapus data berhasil..');
+				}
+				redirect('admin/formulasi_page/action/formulasi10right/', 'refresh');
+		} else {
+			echo "Fail !!";
+		}
+	}
 
 	
 }
 
-/* End of file Conveyor_page.php */
+/* End of file Formulasi_page.php */
 /* Location: ./application/controllers/admin/Home_page.php */

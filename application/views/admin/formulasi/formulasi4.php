@@ -2,7 +2,7 @@
     <div class="section section-team text-center">
       <div class="container">
       <h2 class="title">Konten Formulasi 4</h2>
-      <p class="text-danger"><?php echo $this->session->flashdata('data'); ?></p> 
+       <div class="alert alert-success" role="alert"><?php echo $this->session->flashdata('data'); ?></div> 
         <div class="team">
           <!--Table-->
           <table id="example" class="table-striped table-bordered table-responsive">

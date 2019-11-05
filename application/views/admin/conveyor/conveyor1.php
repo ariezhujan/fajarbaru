@@ -2,7 +2,7 @@
     <div class="section section-team text-center">
       <div class="container">
       <h2 class="title">Konten Conveyor 1</h2>
-      <p class="text-danger"><?php echo $this->session->flashdata('data'); ?></p> 
+       <div class="alert alert-success" role="alert"><?php echo $this->session->flashdata('data'); ?></div>  
         <div class="team">
           <!--Table-->
           <table id="example" class="table-striped table-bordered table-responsive">
@@ -37,6 +37,7 @@
           <!--Table-->
         </div>
       </div>
+      <?php if(!$conveyor1){ ?>
       <div class="row">
         <div class="col-sm-6 col-lg-10">
            <div class="panel panel-default">
@@ -44,23 +45,27 @@
               <h3 class="panel-title">Tambah Data</h3>
             </div>
             <div class="panel-body">
-              <div class="col-md-2">
-                  <button type="button" name="add" id="add" class="btn btn-success"><i class="now-ui-icons ui-1_simple-add"></i></button>
-              </div>
               <form action="<?php echo site_url('admin/conveyor_page/conveyor1') ?>" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-                
-                <div class="form-group">
-                <div id="dynamic_field">
-                  <div class="row" id="field"> 
+                  <div class="row" style="margin-left:70px">
+                    <input type="hidden" value="3" name="page" >
+                    <input type="hidden" value="1" name="sub" >
+                    <input type="hidden" value="1" name="field">
+                    <div class="col-md-10">
+                      <label>Header Text</label>
+                      <input class="input form-control" name="field1" type="text" placeholder="Type something" required/>
+                    </div>
+                    <div class="col-md-10"  style="margin-bottom : 200px;">
+                      <label>Rekomendasi Image : width: 1350px height: 400px , Max file 1mb</label>
+                      <input class="input form-control" name="field2" type="file" placeholder="Type something" required/>
+                    </div>
                   </div>
-                </div>
-                </div>
-                <button type="submit" id="categoryIndustri" class="btn btn-primary" title="Simpan Data" style="margin-top:0px;margin-left: -15px; display: none"><i class="now-ui-icons ui-1_check"></i>&nbsp;&nbsp;Simpan data</button>
+                <button type="submit" id="categoryIndustri" class="btn btn-primary" title="Simpan Data" ><i class="now-ui-icons ui-1_check"></i>&nbsp;&nbsp;Simpan data</button>
               </form>
             </div>
            </div>
         </div>
       </div>
+    <?php } ?>
 </blockquote>
 
 
@@ -110,11 +115,6 @@
 <!--############################# JS ADD FORM ############################################################-->
 <script type="text/javascript">
  $(document).ready(function(){
-  var i=0;
-  $('#add').click(function(){
-    i++;
-    $('#dynamic_field').append('<div class="row" style="margin-left:40px" id="row'+i+'"><input type="hidden" value="3" name="page" ><input type="hidden" value="1" name="sub" ><input type="hidden" value="'+i+'" name="field"><div class="col-md-5"><input class="input form-control" name="field1'+i+'" type="text" placeholder="Type something" required/></div><div class="col-md-5"> <input class="input form-control" name="field2'+i+'" type="file" placeholder="Type something" required/></div><button type="button" name="remove" id="'+i+'" title="Hapus Input Data" class="btn_remove btn btn-danger" style="margin-top:5px;margin-left: 0px;"><i class="now-ui-icons ui-1_simple-delete"></i></button></div>');
-  });
   
   $(document).on('click', '.btn_remove', function(){
     var button_id = $(this).attr("id"); 

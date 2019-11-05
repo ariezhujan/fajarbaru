@@ -4,6 +4,7 @@ class M_data extends CI_Model{
 	function tampil_data($id,$table){
 		$this->db->select('*');
 		$this->db->from($table);
+		$this->db->order_by("id", "DESC");
 		$this->db->where('id_user', $id);
 		return $this->db->get();
 		//return $this->db->get_where($table,$where);
@@ -28,6 +29,25 @@ class M_data extends CI_Model{
 		$this->db->from($table);
 		$this->db->order_by("id", "DESC");
 		$this->db->where('id_user', $id);
+		$this->db->where('id_page', $page);
+		$this->db->where('id_sub_page', $sub);
+		return $this->db->get();
+		//return $this->db->get_where($table,$where);
+	}
+	function tampil_to_form_ASC($id,$page,$sub,$table){
+		$this->db->select('*');
+		$this->db->from($table);
+		$this->db->order_by("id", "ASC");
+		$this->db->where('id_user', $id);
+		$this->db->where('id_page', $page);
+		$this->db->where('id_sub_page', $sub);
+		return $this->db->get();
+		//return $this->db->get_where($table,$where);
+	}
+	function tampil_to_frontpage($page,$sub,$table){
+		$this->db->select('*');
+		$this->db->from($table);
+		$this->db->order_by("id", "ASC");
 		$this->db->where('id_page', $page);
 		$this->db->where('id_sub_page', $sub);
 		return $this->db->get();

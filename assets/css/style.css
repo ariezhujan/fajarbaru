@@ -774,7 +774,7 @@
 
 .service-block {
    min-width: 180px;
-   width: 180px;
+   width: 258px;
    height: 200px;
    position: relative;
    transition: all 0.3s ease-in-out;
@@ -1514,3 +1514,4 @@
 .bgcolor{
 background-color: #fffffff1;
 }
+

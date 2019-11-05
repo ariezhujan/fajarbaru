@@ -2,14 +2,14 @@
     <div class="section section-team text-center">
       <div class="container">
       <h2 class="title">Product Category</h2>
-      <p class="text-danger"><?php echo $this->session->flashdata('data'); ?></p> 
+       <div class="alert alert-success" role="alert"><?php echo $this->session->flashdata('data'); ?></div> 
         <div class="team">
           <!--Table-->
           <table id="example" class="table-striped table-bordered table-responsive">
           <!--Table head-->
             <thead>
               <tr>
-                <th>File</th>
+                <th>Header Text</th>
                 <th>Image</th>
                 <th>Edit</th>
                 <th>Hapus</th>
@@ -20,12 +20,12 @@
             <tbody>
               <?php foreach($product_category as $key) { ?> 
               <tr>
-                <td><?php echo $key->file; ?></td>
+                <td><?php echo $key->text; ?> </td>
                 <td>
                   <img style="width: 20%" src="<?php echo site_url('upload/dashboard/'. $key->file) ?>" >
                 </td>
                 <td>
-                  <a href="javascript:;" data-id="<?php echo $key->id ?>" data-file="<?php echo  $key->file ?>" data-toggle="modal" data-target="#edit-data"><button  data-toggle="modal" data-target="#ubah-data" class="btn btn-sm btn-info"><i class="now-ui-icons ui-2_settings-90"></i></button>
+                  <a href="javascript:;" data-id="<?php echo $key->id ?>" data-file="<?php echo  $key->file ?>" data-text="<?php echo  $key->text ?>" data-toggle="modal" data-target="#edit-data"><button  data-toggle="modal" data-target="#ubah-data" class="btn btn-sm btn-info"><i class="now-ui-icons ui-2_settings-90"></i></button>
                    </a>
                 </td>
                 <td>
@@ -50,7 +50,6 @@
                   <button type="button" name="add" id="add" class="btn btn-success"><i class="now-ui-icons ui-1_simple-add"></i></button>
               </div>
               <form action="<?php echo site_url('admin/home_page/product_category') ?>" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-                
                 <div class="form-group">
                 <div id="dynamic_field">
                   <div class="row" id="field"> 
@@ -74,7 +73,6 @@
                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
                 <h4 class="modal-title">Ubah Data</h4>
             </div>
-
             <div class="col-sm-10 col-lg-10">
                 <div class="row">
                 <form class="form-horizontal" action="<?php echo base_url('admin/home_page/product_category_edit')?>" method="post" enctype="multipart/form-data" role="form">
@@ -84,7 +82,12 @@
                             <br>
                             <br>
                               <input type="hidden" name="id" id="id">
-                              <input type="file" class="form-control" id="id" name="field1" required="required">
+                              <input type="file" class="form-control" id="file" name="field1" required="required">
+                          </div>
+                           <div class="col-md-10">
+                            <br>
+                            <br>
+                              <input type="text" class="form-control" id="text" name="field2" required="required">
                           </div>
                           <br>
                           <br>
@@ -109,7 +112,7 @@
   var i=0;
   $('#add').click(function(){
     i++;
-    $('#dynamic_field').append('<div class="row" style="margin-left:40px" id="row'+i+'"><input type="hidden" value="1" name="page" ><input type="hidden" value="2" name="sub" ><input type="hidden" value="'+i+'" name="field"><div class="col-md-10"><input class="input form-control" name="field1'+i+'" type="file" placeholder="Type something" required/></div><button type="button" name="remove" id="'+i+'" title="Hapus Input Data" class="btn_remove btn btn-danger" style="margin-top:5px;margin-left: 0px;"><i class="now-ui-icons ui-1_simple-delete"></i></button></div>');
+    $('#dynamic_field').append('<div class="row" style="margin-left:40px" id="row'+i+'"><input type="hidden" value="1" name="page" ><input type="hidden" value="2" name="sub" ><input type="hidden" value="'+i+'" name="field"><div class="col-md-4"><input class="input form-control" name="field2'+i+'" type="file" placeholder="Type something" required/></div><div class="col-md-8"><input class="input form-control" name="field1'+i+'" type="text" placeholder="Type something" required/></div><button type="button" name="remove" id="'+i+'" title="Hapus Input Data" class="btn_remove btn btn-danger" style="margin-top:5px;margin-left: 0px;"><i class="now-ui-icons ui-1_simple-delete"></i></button></div>');
   });
   
   $(document).on('click', '.btn_remove', function(){
@@ -133,6 +136,7 @@
             // Isi nilai pada field
             modal.find('#id').attr("value",div.data('id'));
             modal.find('#file').attr("value",div.data('file'));
+            modal.find('#text').attr("value",div.data('text'));
         });
     });
 

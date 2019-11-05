@@ -2,7 +2,7 @@
     <div class="section section-team text-center">
       <div class="container">
       <h2 class="title">Address</h2>
-      <p class="text-danger"><?php echo $this->session->flashdata('data'); ?></p> 
+       <div class="alert alert-success" role="alert"><?php echo $this->session->flashdata('data'); ?></div> 
         <div class="team">
           <!--Table-->
           <table id="example" class="table table-striped table-bordered table-responsive">
@@ -316,12 +316,12 @@
 
   $('#add1').click(function(){
     i++;
-    $('#dynamic_field1').append('<div class="row" style="margin-left:40px" id="row'+i+'"><input type="hidden" value="1" name="page" placeholder="" class="form-control"><input type="hidden" value="6" name="sub" placeholder="" class="form-control"><input type="hidden" value="'+i+'" name="field"><div class="col-md-4"><input autocomplete="off" class="input form-control" name="field1[]" type="text" placeholder="Contact" required/></div><div class="col-md-6"><textarea autocomplete="off" class="input form-control" name="field2[]" type="text" placeholder="Number" required/></textarea></div><button type="button" name="remove" id="'+i+'" title="Hapus Input Data" class="btn_remove btn btn-danger" style="margin-top:5px;margin-left: 0px;"><i class="now-ui-icons ui-1_simple-delete"></i></button></div>');
+    $('#dynamic_field1').append('<div class="row" style="margin-left:40px" id="row'+i+'"><input type="hidden" value="1" name="page" placeholder="" class="form-control"><input type="hidden" value="6" name="sub" placeholder="" class="form-control"><input type="hidden" value="'+i+'" name="field"><div class="col-md-4"><input autocomplete="off" class="input form-control" name="field1[]" type="text" placeholder="Whatsapp, phone dll" required/></div><div class="col-md-6"><textarea autocomplete="off" class="input form-control" name="field2[]" type="text" placeholder="Number" required/></textarea></div><button type="button" name="remove" id="'+i+'" title="Hapus Input Data" class="btn_remove btn btn-danger" style="margin-top:5px;margin-left: 0px;"><i class="now-ui-icons ui-1_simple-delete"></i></button></div>');
   });
 
   $('#add2').click(function(){
     i++;
-    $('#dynamic_field2').append('<div class="row" style="margin-left:40px" id="row'+i+'"><input type="hidden" value="1" name="page" placeholder="" class="form-control"><input type="hidden" value="6" name="sub" placeholder="" class="form-control"><input type="hidden" value="'+i+'" name="field"><div class="col-md-10"><textarea autocomplete="off" class="input form-control" name="field1" type="text" placeholder="Sematkan peta" required/></textarea></div><button type="button" name="remove" id="'+i+'" title="Hapus Input Data" class="btn_remove btn btn-danger" style="margin-top:5px;margin-left: 0px;"><i class="now-ui-icons ui-1_simple-delete"></i></button></div>');
+    $('#dynamic_field2').append('<div class="row" style="margin-left:40px" id="row'+i+'"><input type="hidden" value="1" name="page" placeholder="" class="form-control"><input type="hidden" value="6" name="sub" placeholder="" class="form-control"><input type="hidden" value="'+i+'" name="field"><div class="col-md-10"><label>Ukuran Maps width : 100% , height : 300px </label><textarea autocomplete="off" class="input form-control" name="field1" type="text" placeholder="Sematkan peta" required/></textarea></div><button type="button" name="remove" id="'+i+'" title="Hapus Input Data" class="btn_remove btn btn-danger" style="margin-top:5px;margin-left: 0px;"><i class="now-ui-icons ui-1_simple-delete"></i></button></div>');
   });
   
   $(document).on('click', '.btn_remove', function(){

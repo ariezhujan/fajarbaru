@@ -869,3 +869,19 @@ b, strong {
     width: 400px;
     height: 200px;
 }
+
+
+.team-player img{
+    max-width: 18% !important;
+    padding: 10px !important;
+}
+
+.liicon{
+    padding-left: 20px;
+    padding-right: 20px; 
+}
+
+.nav-link a {
+    color: #000000 !important;
+    font-weight: 800;
+}

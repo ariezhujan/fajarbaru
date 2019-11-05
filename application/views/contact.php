@@ -1,10 +1,13 @@
 
 <div class="page-header page-header-small">
-  <div class="page-header-image" data-parallax="true" style='background-image: url("<?php echo base_url() ?>/assets/img/fileuser/contact.jpg");'>
-  </div>
+   <?php if($contact1){ ?>
+    <div class="page-header-image" data-parallax="true" style='background-image: url("<?php echo base_url('upload/contact/'. $contact1->file) ?>");'></div>
+  <?php  } ?>
   <div class="content-center">
     <div class="container">
-      <h2 class="title"><strong>Contact Us</strong></h2>
+      <?php if($contact1){ ?>
+            <h2 class="title"><strong><?php echo $contact1->text; ?></strong></h2>
+       <?php } ?>
     </div>
   </div>
   </div>
@@ -14,8 +17,10 @@
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-					<h2>We would love to hear from you!</h2>
-					<p>Convey your thoughts to us, anything about ideas, suggestions, complaints. Thus we will be very grateful, to further advance the innovative industry.</p>
+					<?php foreach ($contact2 as $key) { ?>
+            <h2><?php echo $key->text; ?></h2>
+            <p><?php echo $key->file; ?></p>
+          <?php } ?>
 				</div>
 			</div>
 			<div class="container contact">
@@ -31,7 +36,7 @@
           <div class="row">
             <div class="col-sm-1"></div>
             <div class="col-sm-3"> 
-              <a class="nav-link-contact" rel="tooltip" title="" data-placement="bottom" href="tel:0247625823" data-original-title="Contact us on Phone (+6224) 7625823">
+              <a class="nav-link-contact" rel="tooltip" title="" data-placement="bottom" href="tel:<?php if($contact3){ echo $contact3->phone;  }?>" data-original-title="Contact us on Phone <?php if($contact3){ echo $contact3->phone;  }?>">
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                   width="100" height="100"
                   viewBox="0 0 172 172"
@@ -40,7 +45,7 @@
               </a>         
             </div>
             <div class="col-sm-3">
-              <a class="nav-link-contact" rel="tooltip" title="" data-placement="bottom" href="https://wa.me/6281931763399" data-original-title="Chat us on Whatsapp (+62)81931763399">
+              <a class="nav-link-contact" rel="tooltip" title="" data-placement="bottom" href="https://wa.me/<?php if($contact3){ echo $contact3->whatsapp;  }?>" data-original-title="Chat us on Whatsapp +<?php if($contact3){ echo $contact3->whatsapp;  }?>">
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                   width="100" height="100"
                   viewBox="0 0 172 172"
@@ -50,7 +55,7 @@
               </a>
             </div>
             <div class="col-sm-3">
-              <a class="nav-link-contact" rel="tooltip" title="" data-placement="bottom" href="mailto: info@fajarbaru.co.id?subject=Question From Web " data-original-title="Message us on Email info@fajarbaru.co.id">
+              <a class="nav-link-contact" rel="tooltip" title="" data-placement="bottom" href="mailto: <?php if($contact3){ echo $contact3->email;  }?>?subject=Question From Web " data-original-title="Message us on Email <?php if($contact3){ echo $contact3->email;  }?>">
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                   width="100" height="100"
                   viewBox="0 0 172 172"
@@ -74,8 +79,10 @@
 				<div class="col-md-12 col-md-offset-2 text-center gtco-heading">
         <div class="row">
 				<div class="col-md-12 col-md-offset-2 text-center gtco-heading animate-box fadeInUp animated-fast">
-					<h2>Ask Questions</h2>
-					<p>Thank you for visiting us. Fajar Baru Teknik Makmur to offer the best value for all products. Please contact us with questions you might have using one of our contact tools listed on this page.</p>
+					<?php foreach ($contact4 as $key) { ?>
+          <h2><?php echo $key->text; ?></h2>
+          <p><?php echo $key->file; ?></p>
+        <?php } ?>
 				</div>
 			</div>
 				</div>

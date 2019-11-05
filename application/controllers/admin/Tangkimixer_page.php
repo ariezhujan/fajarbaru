@@ -42,11 +42,18 @@ class Tangkimixer_page extends CI_Controller {
 			$data['users'] = $this->ion_auth->users()->result();			
 			//USAGE NOTE - you can do more complicated queries like this
 			//$this->data['users'] = $this->ion_auth->where('field', 'value')->users()->result();
-			
 			foreach ($data['users'] as $k => $user)
 			{
 				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
+			$data['tangkimixer1'] = $this->M_data->tampil_to_form_ASC($user->id,4,1,'tangkimixer1')->row();
+			$data['tangkimixer2'] = $this->M_data->tampil_to_form_ASC($user->id,4,2,'tangkimixer2')->result();
+			$data['tangkimixer3'] = $this->M_data->tampil_to_form_ASC($user->id,4,3,'tangkimixer3')->result();
+			$data['tangkimixer4'] = $this->M_data->tampil_to_form_ASC($user->id,4,4,'tangkimixer4')->result();
+			$data['tangkimixer5left'] = $this->M_data->tampil_to_form_ASC($user->id,4,5,'tangkimixer5left')->result();
+			$data['tangkimixer5right'] = $this->M_data->tampil_to_form_ASC($user->id,4,5,'tangkimixer5right')->result();
+			$data['tangkimixer6left'] = $this->M_data->tampil_to_form_ASC($user->id,4,6,'tangkimixer6left')->result();
+			$data['tangkimixer6right'] = $this->M_data->tampil_to_form_ASC($user->id,4,6,'tangkimixer6right')->result();
 			$data['content'] = 'admin/tangkimixer_page';
 			$this->load->view('admin/master', $data);
 		}
@@ -187,7 +194,7 @@ class Tangkimixer_page extends CI_Controller {
 				}
 				//echo $this->uri->segment(4);
 		}
-		elseif ($this->uri->segment(4) == 'tangkimixer5' ) {
+		elseif ($this->uri->segment(4) == 'tangkimixer5left' ) {
 			if (!$this->ion_auth->logged_in())
 				{
 					// redirect them to the login page
@@ -214,13 +221,13 @@ class Tangkimixer_page extends CI_Controller {
 					{
 						$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 					}
-					$data['tangkimixer5'] = $this->M_data->tampil_to_form($user->id,4,5,'tangkimixer5')->result();
-					$data['content'] = 'admin/tangkimixer/tangkimixer5';
+					$data['tangkimixer5left'] = $this->M_data->tampil_to_form($user->id,4,5,'tangkimixer5left')->result();
+					$data['content'] = 'admin/tangkimixer/tangkimixer5left';
 					$this->load->view('admin/master', $data);
 				}
 				//echo $this->uri->segment(4);
 		}
-		elseif ($this->uri->segment(4) == 'tangkimixer6' ) {
+		elseif ($this->uri->segment(4) == 'tangkimixer5right' ) {
 			if (!$this->ion_auth->logged_in())
 				{
 					// redirect them to the login page
@@ -247,8 +254,73 @@ class Tangkimixer_page extends CI_Controller {
 					{
 						$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 					}
-					$data['tangkimixer6'] = $this->M_data->tampil_to_form($user->id,4,6,'tangkimixer6')->result();
-					$data['content'] = 'admin/tangkimixer/tangkimixer6';
+					$data['tangkimixer5right'] = $this->M_data->tampil_to_form($user->id,4,5,'tangkimixer5right')->result();
+					$data['content'] = 'admin/tangkimixer/tangkimixer5right';
+					$this->load->view('admin/master', $data);
+				}
+				//echo $this->uri->segment(4);
+		}
+		elseif ($this->uri->segment(4) == 'tangkimixer6left' ) {
+			if (!$this->ion_auth->logged_in())
+				{
+					// redirect them to the login page
+					redirect('admin/auth/login', 'refresh');
+				}
+			else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
+				{
+					// redirect them to the home page because they must be an administrator to view this
+					show_error('You must be an administrator to view this page.');
+				}
+			else
+				{
+					$this->data['title'] = $this->lang->line('index_heading');
+					
+					// set the flash data error message if there is one
+					$data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+
+					//list the users
+					$data['users'] = $this->ion_auth->users()->result();			
+					//USAGE NOTE - you can do more complicated queries like this
+					//$this->data['users'] = $this->ion_auth->where('field', 'value')->users()->result();
+					
+					foreach ($data['users'] as $k => $user)
+					{
+						$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+					}
+					$data['tangkimixer6left'] = $this->M_data->tampil_to_form($user->id,4,6,'tangkimixer6left')->result();
+					$data['content'] = 'admin/tangkimixer/tangkimixer6left';
+					$this->load->view('admin/master', $data);
+				}
+			}
+			elseif ($this->uri->segment(4) == 'tangkimixer6right' ) {
+			if (!$this->ion_auth->logged_in())
+				{
+					// redirect them to the login page
+					redirect('admin/auth/login', 'refresh');
+				}
+			else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
+				{
+					// redirect them to the home page because they must be an administrator to view this
+					show_error('You must be an administrator to view this page.');
+				}
+			else
+				{
+					$this->data['title'] = $this->lang->line('index_heading');
+					
+					// set the flash data error message if there is one
+					$data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+
+					//list the users
+					$data['users'] = $this->ion_auth->users()->result();			
+					//USAGE NOTE - you can do more complicated queries like this
+					//$this->data['users'] = $this->ion_auth->where('field', 'value')->users()->result();
+					
+					foreach ($data['users'] as $k => $user)
+					{
+						$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+					}
+					$data['tangkimixer6right'] = $this->M_data->tampil_to_form($user->id,4,6,'tangkimixer6right')->result();
+					$data['content'] = 'admin/tangkimixer/tangkimixer6right';
 					$this->load->view('admin/master', $data);
 				}
 			}else{
@@ -322,8 +394,7 @@ class Tangkimixer_page extends CI_Controller {
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
 					$field = $this->input->post('page');
 					if(!empty($field)){
-		    		for ($i=1; $i <= $file ; $i++) { 
-		    			$file1 = time().$i.$_FILES["field2".$i]['name'];
+		    			$file1 = time().$_FILES["field2"]['name'];
 					    $config['upload_path']          = './upload/tangkimixer/';
 					    $config['allowed_types']        = 'gif|jpg|png';
 					    $config['file_name']            = $file1;
@@ -331,26 +402,24 @@ class Tangkimixer_page extends CI_Controller {
 					    $this->load->library('upload', $config);
 					    $this->upload->initialize($config); 
 					     //$file1 = $_FILES["field2".$i]["name"];
-						   	if ( (!$this->upload->do_upload('field2'.$i)) )
-				                {
-				                    $error = array('error' => $this->upload->display_errors());
-				                    var_dump($error); //$this->load->view('upload_form', $error);
-				                }
-			                else
+					   	if ( (!$this->upload->do_upload('field2')) )
 			                {
-		                        $data = [
-									'id_user' => $this->ion_auth->get_user_id(),
-									'id_page' => $this->input->post('page'),
-									'id_sub_page' => $this->input->post('sub'),
-									'text'  => $this->input->post('field1'.$i),
-									'file'  => $file1,
-									'create_at' => date("Y-m-d H:i:s"),
-									];
-									$this->M_data->input_data($data,'tangkimixer1');
-									$this->session->set_flashdata('data','Data baru berhasil di input..');
+			                    $error = array('error' => $this->upload->display_errors());
+			                    var_dump($error); //$this->load->view('upload_form', $error);
 			                }
-			    
-					}
+		                else
+		                {
+	                        $data = [
+								'id_user' => $this->ion_auth->get_user_id(),
+								'id_page' => $this->input->post('page'),
+								'id_sub_page' => $this->input->post('sub'),
+								'text'  => $this->input->post('field1'),
+								'file'  => $file1,
+								'create_at' => date("Y-m-d H:i:s"),
+								];
+								$this->M_data->input_data($data,'tangkimixer1');
+								$this->session->set_flashdata('data','Data baru berhasil di input..');
+		                }
 				 }else{
 			              $this->session->set_flashdata('data','Data yang Anda memasukan kosong..');
 			      }
@@ -758,7 +827,7 @@ class Tangkimixer_page extends CI_Controller {
 
 
 
-	public function tangkimixer5(){
+	public function tangkimixer5left(){
 		$data['users'] = $this->ion_auth->users()->result();
 		foreach ($data['users'] as $k => $user)
 			{
@@ -798,7 +867,7 @@ class Tangkimixer_page extends CI_Controller {
 									'file'  => $file1,
 									'create_at' => date("Y-m-d H:i:s"),
 									];
-									$this->M_data->input_data($data,'tangkimixer5');
+									$this->M_data->input_data($data,'tangkimixer5left');
 									$this->session->set_flashdata('data','Data baru berhasil di input..');
 			                }
 			    
@@ -806,7 +875,7 @@ class Tangkimixer_page extends CI_Controller {
 				 }else{
 			              $this->session->set_flashdata('data','Data yang Anda memasukan kosong..');
 			      }
-					redirect('admin/tangkimixer_page/action/tangkimixer5/', 'refresh');
+					redirect('admin/tangkimixer_page/action/tangkimixer5left/', 'refresh');
 				
 			}else {
 				echo "FALSE";
@@ -816,7 +885,7 @@ class Tangkimixer_page extends CI_Controller {
 		}
 	}
 
-	public function tangkimixer5_edit(){
+	public function tangkimixer5left_edit(){
 		$data['users'] = $this->ion_auth->users()->result();
 		foreach ($data['users'] as $k => $user)
 			{
@@ -844,24 +913,24 @@ class Tangkimixer_page extends CI_Controller {
 								'update_at' => date("Y-m-d H:i:s"),
 								];
 								$input = $this->input->post("id");
-								$data1['tangkimixer5'] = $this->M_data->tampil_data_controller($input,'tangkimixer5')->result();
-						        foreach ($data1['tangkimixer5'] as $k => $file)
+								$data1['tangkimixer5left'] = $this->M_data->tampil_data_controller($input,'tangkimixer5left')->result();
+						        foreach ($data1['tangkimixer5left'] as $k => $file)
 								{
-									$data1['tangkimixer5'][$k]= $this->M_data->tampil_data_controller($input,'tangkimixer5')->result();
+									$data1['tangkimixer5left'][$k]= $this->M_data->tampil_data_controller($input,'tangkimixer5left')->result();
 					            }
 					            unlink("./upload/tangkimixer/$file->file");
-								$this->M_data->update_data($id,$data,'tangkimixer5');
+								$this->M_data->update_data($id,$data,'tangkimixer5left');
 								$this->session->set_flashdata('data','Update data berhasil..');
 								
 	                }
-			redirect('admin/tangkimixer_page/action/tangkimixer5/', 'refresh');
+			redirect('admin/tangkimixer_page/action/tangkimixer5left/', 'refresh');
 				
 			}else {
 				echo "FALSE";
 			}
 		}
 
-		public function tangkimixer5_remove(){
+		public function tangkimixer5left_remove(){
 		$data['users'] = $this->ion_auth->users()->result();
 		foreach ($data['users'] as $k => $user)
 			{
@@ -871,26 +940,25 @@ class Tangkimixer_page extends CI_Controller {
 			//echo $user->id;
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
 			$input = $this->input->get("id");
-			$data1['tangkimixer5'] = $this->M_data->tampil_data_controller($input,'tangkimixer5')->result();
-	        foreach ($data1['tangkimixer5'] as $k => $file)
+			$data1['tangkimixer5left'] = $this->M_data->tampil_data_controller($input,'tangkimixer5left')->result();
+	        foreach ($data1['tangkimixer5left'] as $k => $file)
 			{
-				$data1['tangkimixer5'][$k]= $this->M_data->tampil_data_controller($input,'tangkimixer5')->result();
+				$data1['tangkimixer5left'][$k]= $this->M_data->tampil_data_controller($input,'tangkimixer5left')->result();
             }
-				if ($this->M_data->tampil_to_form($user->id,4,5,'tangkimixer5')->result()){
+				if ($this->M_data->tampil_to_form($user->id,4,5,'tangkimixer5left')->result()){
 						$where = $input;
 						unlink("./upload/tangkimixer/$file->file");
-						$this->M_data->hapus_data($where,'tangkimixer5');
+						$this->M_data->hapus_data($where,'tangkimixer5left');
 						$this->session->set_flashdata('data','Hapus data berhasil..');
 				}
-				redirect('admin/tangkimixer_page/action/tangkimixer5/', 'refresh');
+				redirect('admin/tangkimixer_page/action/tangkimixer5left/', 'refresh');
 		} else {
 			echo "Fail !!";
 		}
 	}
 
 
-
-public function tangkimixer6(){
+	public function tangkimixer5right(){
 		$data['users'] = $this->ion_auth->users()->result();
 		foreach ($data['users'] as $k => $user)
 			{
@@ -930,7 +998,7 @@ public function tangkimixer6(){
 									'file'  => $file1,
 									'create_at' => date("Y-m-d H:i:s"),
 									];
-									$this->M_data->input_data($data,'tangkimixer6');
+									$this->M_data->input_data($data,'tangkimixer5right');
 									$this->session->set_flashdata('data','Data baru berhasil di input..');
 			                }
 			    
@@ -938,7 +1006,7 @@ public function tangkimixer6(){
 				 }else{
 			              $this->session->set_flashdata('data','Data yang Anda memasukan kosong..');
 			      }
-					redirect('admin/tangkimixer_page/action/tangkimixer6/', 'refresh');
+					redirect('admin/tangkimixer_page/action/tangkimixer5right/', 'refresh');
 				
 			}else {
 				echo "FALSE";
@@ -948,7 +1016,7 @@ public function tangkimixer6(){
 		}
 	}
 
-	public function tangkimixer6_edit(){
+	public function tangkimixer5right_edit(){
 		$data['users'] = $this->ion_auth->users()->result();
 		foreach ($data['users'] as $k => $user)
 			{
@@ -976,24 +1044,24 @@ public function tangkimixer6(){
 								'update_at' => date("Y-m-d H:i:s"),
 								];
 								$input = $this->input->post("id");
-								$data1['tangkimixer6'] = $this->M_data->tampil_data_controller($input,'tangkimixer6')->result();
-						        foreach ($data1['tangkimixer6'] as $k => $file)
+								$data1['tangkimixer5right'] = $this->M_data->tampil_data_controller($input,'tangkimixer5right')->result();
+						        foreach ($data1['tangkimixer5right'] as $k => $file)
 								{
-									$data1['tangkimixer6'][$k]= $this->M_data->tampil_data_controller($input,'tangkimixer6')->result();
+									$data1['tangkimixer5right'][$k]= $this->M_data->tampil_data_controller($input,'tangkimixer5right')->result();
 					            }
 					            unlink("./upload/tangkimixer/$file->file");
-								$this->M_data->update_data($id,$data,'tangkimixer6');
+								$this->M_data->update_data($id,$data,'tangkimixer5right');
 								$this->session->set_flashdata('data','Update data berhasil..');
 								
 	                }
-			redirect('admin/tangkimixer_page/action/tangkimixer6/', 'refresh');
+			redirect('admin/tangkimixer_page/action/tangkimixer5right/', 'refresh');
 				
 			}else {
 				echo "FALSE";
 			}
 		}
 
-		public function tangkimixer6_remove(){
+		public function tangkimixer5right_remove(){
 		$data['users'] = $this->ion_auth->users()->result();
 		foreach ($data['users'] as $k => $user)
 			{
@@ -1003,18 +1071,278 @@ public function tangkimixer6(){
 			//echo $user->id;
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
 			$input = $this->input->get("id");
-			$data1['tangkimixer6'] = $this->M_data->tampil_data_controller($input,'tangkimixer6')->result();
-	        foreach ($data1['tangkimixer6'] as $k => $file)
+			$data1['tangkimixer5right'] = $this->M_data->tampil_data_controller($input,'tangkimixer5right')->result();
+	        foreach ($data1['tangkimixer5right'] as $k => $file)
 			{
-				$data1['tangkimixer6'][$k]= $this->M_data->tampil_data_controller($input,'tangkimixer6')->result();
+				$data1['tangkimixer5right'][$k]= $this->M_data->tampil_data_controller($input,'tangkimixer5right')->result();
             }
-				if ($this->M_data->tampil_to_form($user->id,4,6,'tangkimixer6')->result()){
+				if ($this->M_data->tampil_to_form($user->id,4,5,'tangkimixer5right')->result()){
 						$where = $input;
 						unlink("./upload/tangkimixer/$file->file");
-						$this->M_data->hapus_data($where,'tangkimixer6');
+						$this->M_data->hapus_data($where,'tangkimixer5right');
 						$this->session->set_flashdata('data','Hapus data berhasil..');
 				}
-				redirect('admin/tangkimixer_page/action/tangkimixer6/', 'refresh');
+				redirect('admin/tangkimixer_page/action/tangkimixer5right/', 'refresh');
+		} else {
+			echo "Fail !!";
+		}
+	}
+
+
+	public function tangkimixer6left(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+			if ($user->id) {
+				$data['users'] = $this->ion_auth->users()->result();
+				foreach ($data['users'] as $k => $user)
+					{
+						$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+		            }
+        	$file = $this->input->post("field");
+			if ($user->id) {
+				$this->session->set_flashdata('message', $this->ion_auth->messages());
+					$field = $this->input->post('page');
+					if(!empty($field)){
+		    		for ($i=1; $i <= $file ; $i++) { 
+		    			$file1 = time().$i.$_FILES["field2".$i]['name'];
+					    $config['upload_path']          = './upload/tangkimixer/';
+					    $config['allowed_types']        = 'gif|jpg|png';
+					    $config['file_name']            = $file1;
+					    $config['max_size']             = 9024; // 1MB
+					    $this->load->library('upload', $config);
+					    $this->upload->initialize($config); 
+					     //$file1 = $_FILES["field2".$i]["name"];
+						   	if ( (!$this->upload->do_upload('field2'.$i)) )
+				                {
+				                    $error = array('error' => $this->upload->display_errors());
+				                    var_dump($error); //$this->load->view('upload_form', $error);
+				                }
+			                else
+			                {
+		                        $data = [
+									'id_user' => $this->ion_auth->get_user_id(),
+									'id_page' => $this->input->post('page'),
+									'id_sub_page' => $this->input->post('sub'),
+									'file'  => $file1,
+									'create_at' => date("Y-m-d H:i:s"),
+									];
+									$this->M_data->input_data($data,'tangkimixer6left');
+									$this->session->set_flashdata('data','Data baru berhasil di input..');
+			                }
+			    
+					}
+				 }else{
+			              $this->session->set_flashdata('data','Data yang Anda memasukan kosong..');
+			      }
+					redirect('admin/tangkimixer_page/action/tangkimixer6left/', 'refresh');
+				
+			}else {
+				echo "FALSE";
+			}
+		}else {
+			echo "FALSE";
+		}
+	}
+
+	public function tangkimixer6left_edit(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+			$id = $this->input->post('id');
+			    $file1 = time().$_FILES["field2"]['name'];
+			    $config['upload_path']          = './upload/tangkimixer/';
+			    $config['allowed_types']        = 'gif|jpg|png';
+			    $config['file_name']            = $file1;
+			    $config['max_size']             = 9024; // 1MB
+			    $this->load->library('upload', $config);
+			    $this->upload->initialize($config); 
+			   	if ( (!$this->upload->do_upload('field2')) )
+	                {
+	                    $error = array('error' => $this->upload->display_errors());
+	                    var_dump($error); //$this->load->view('upload_form', $error);
+	                }
+	                else
+	                {
+	                        $data = [
+								'file'  => $file1,
+								'update_at' => date("Y-m-d H:i:s"),
+								];
+								$input = $this->input->post("id");
+								$data1['tangkimixer6left'] = $this->M_data->tampil_data_controller($input,'tangkimixer6left')->result();
+						        foreach ($data1['tangkimixer6left'] as $k => $file)
+								{
+									$data1['tangkimixer6left'][$k]= $this->M_data->tampil_data_controller($input,'tangkimixer6left')->result();
+					            }
+					            unlink("./upload/tangkimixer/$file->file");
+								$this->M_data->update_data($id,$data,'tangkimixer6left');
+								$this->session->set_flashdata('data','Update data berhasil..');
+								
+	                }
+			redirect('admin/tangkimixer_page/action/tangkimixer6left/', 'refresh');
+				
+			}else {
+				echo "FALSE";
+			}
+		}
+
+		public function tangkimixer6left_remove(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			//echo $user->id;
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+			$input = $this->input->get("id");
+			$data1['tangkimixer6left'] = $this->M_data->tampil_data_controller($input,'tangkimixer6left')->result();
+	        foreach ($data1['tangkimixer6left'] as $k => $file)
+			{
+				$data1['tangkimixer6left'][$k]= $this->M_data->tampil_data_controller($input,'tangkimixer6left')->result();
+            }
+				if ($this->M_data->tampil_to_form($user->id,4,6,'tangkimixer6left')->result()){
+						$where = $input;
+						unlink("./upload/tangkimixer/$file->file");
+						$this->M_data->hapus_data($where,'tangkimixer6left');
+						$this->session->set_flashdata('data','Hapus data berhasil..');
+				}
+				redirect('admin/tangkimixer_page/action/tangkimixer6left/', 'refresh');
+		} else {
+			echo "Fail !!";
+		}
+	}
+
+
+	public function tangkimixer6right(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+			if ($user->id) {
+				$data['users'] = $this->ion_auth->users()->result();
+				foreach ($data['users'] as $k => $user)
+					{
+						$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+		            }
+        	$file = $this->input->post("field");
+			if ($user->id) {
+				$this->session->set_flashdata('message', $this->ion_auth->messages());
+					$field = $this->input->post('page');
+					if(!empty($field)){
+		    		for ($i=1; $i <= $file ; $i++) { 
+		    			$file1 = time().$i.$_FILES["field2".$i]['name'];
+					    $config['upload_path']          = './upload/tangkimixer/';
+					    $config['allowed_types']        = 'gif|jpg|png';
+					    $config['file_name']            = $file1;
+					    $config['max_size']             = 9024; // 1MB
+					    $this->load->library('upload', $config);
+					    $this->upload->initialize($config); 
+					     //$file1 = $_FILES["field2".$i]["name"];
+						   	if ( (!$this->upload->do_upload('field2'.$i)) )
+				                {
+				                    $error = array('error' => $this->upload->display_errors());
+				                    var_dump($error); //$this->load->view('upload_form', $error);
+				                }
+			                else
+			                {
+		                        $data = [
+									'id_user' => $this->ion_auth->get_user_id(),
+									'id_page' => $this->input->post('page'),
+									'id_sub_page' => $this->input->post('sub'),
+									'file'  => $file1,
+									'create_at' => date("Y-m-d H:i:s"),
+									];
+									$this->M_data->input_data($data,'tangkimixer6right');
+									$this->session->set_flashdata('data','Data baru berhasil di input..');
+			                }
+					}
+				 }else{
+			              $this->session->set_flashdata('data','Data yang Anda memasukan kosong..');
+			      }
+					redirect('admin/tangkimixer_page/action/tangkimixer6right/', 'refresh');
+			}else {
+				echo "FALSE";
+			}
+		}else {
+			echo "FALSE";
+		}
+	}
+
+	public function tangkimixer6right_edit(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+			$id = $this->input->post('id');
+			    $file1 = time().$_FILES["field2"]['name'];
+			    $config['upload_path']          = './upload/tangkimixer/';
+			    $config['allowed_types']        = 'gif|jpg|png';
+			    $config['file_name']            = $file1;
+			    $config['max_size']             = 9024; // 1MB
+			    $this->load->library('upload', $config);
+			    $this->upload->initialize($config); 
+			   	if ( (!$this->upload->do_upload('field2')) )
+	                {
+	                    $error = array('error' => $this->upload->display_errors());
+	                    var_dump($error); //$this->load->view('upload_form', $error);
+	                }
+	                else
+	                {
+	                        $data = [
+								'file'  => $file1,
+								'update_at' => date("Y-m-d H:i:s"),
+								];
+								$input = $this->input->post("id");
+								$data1['tangkimixer6right'] = $this->M_data->tampil_data_controller($input,'tangkimixer6right')->result();
+						        foreach ($data1['tangkimixer6right'] as $k => $file)
+								{
+									$data1['tangkimixer6right'][$k]= $this->M_data->tampil_data_controller($input,'tangkimixer6right')->result();
+					            }
+					            unlink("./upload/tangkimixer/$file->file");
+								$this->M_data->update_data($id,$data,'tangkimixer6right');
+								$this->session->set_flashdata('data','Update data berhasil..');
+								
+	                }
+			redirect('admin/tangkimixer_page/action/tangkimixer6right/', 'refresh');
+				
+			}else {
+				echo "FALSE";
+			}
+		}
+
+		public function tangkimixer6right_remove(){
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)
+			{
+				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+		if ($user->id) {
+			//echo $user->id;
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+			$input = $this->input->get("id");
+			$data1['tangkimixer6right'] = $this->M_data->tampil_data_controller($input,'tangkimixer6right')->result();
+	        foreach ($data1['tangkimixer6right'] as $k => $file)
+			{
+				$data1['tangkimixer6right'][$k]= $this->M_data->tampil_data_controller($input,'tangkimixer6right')->result();
+            }
+				if ($this->M_data->tampil_to_form($user->id,4,6,'tangkimixer6right')->result()){
+						$where = $input;
+						unlink("./upload/tangkimixer/$file->file");
+						$this->M_data->hapus_data($where,'tangkimixer6right');
+						$this->session->set_flashdata('data','Hapus data berhasil..');
+				}
+				redirect('admin/tangkimixer_page/action/tangkimixer6right/', 'refresh');
 		} else {
 			echo "Fail !!";
 		}

@@ -47,11 +47,10 @@ class About_page extends CI_Controller {
 			{
 				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
-			//$data['page_action'] = $this->M_data->tampil_data($user->id,'action_page')->result();
-			$data['header'] = $this->M_data->tampil_to_form($user->id,2,1,'header')->result();
-			$data['product_category'] = $this->M_data->tampil_to_form($user->id,2,2,'action_page')->result();
-			$data['our_advan'] = $this->M_data->tampil_to_form($user->id,2,4,'action_page')->result();
-			$data['our_partner'] = $this->M_data->tampil_to_form($user->id,2,5,'our_partner')->result();
+			$data['header'] = $this->M_data->tampil_to_form_ASC($user->id,2,1,'header')->row();
+			$data['about1'] = $this->M_data->tampil_to_form_ASC($user->id,2,2,'about1')->result();
+			$data['about2'] = $this->M_data->tampil_to_form_ASC($user->id,2,3,'about2')->result();
+			$data['about3'] = $this->M_data->tampil_to_form_ASC($user->id,2,4,'about3')->result();
 			$data['content'] = 'admin/about_page';
 			$this->load->view('admin/master', $data);
 		}
@@ -86,7 +85,7 @@ class About_page extends CI_Controller {
 					{
 						$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 					}
-					$data['header'] = $this->M_data->tampil_field('header')->result();
+					$data['header'] = $this->M_data->tampil_to_form($user->id,2,1,'header')->result();
 					$data['content'] = 'admin/about/header';
 					$this->load->view('admin/master', $data);
 					//echo $field->conveyor_system;
@@ -251,48 +250,41 @@ class About_page extends CI_Controller {
 			{
 				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
             }
-		if ($user->id) {
-			$data['users'] = $this->ion_auth->users()->result();
-		foreach ($data['users'] as $k => $user)
-			{
-				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
-            }
-        $file = $this->input->post("field");
-		if ($user->id) {
-			$this->session->set_flashdata('message', $this->ion_auth->messages());
-				$field = $this->input->post('page');
-				if(!empty($field)){
-		    		for ($i=1; $i <= $file ; $i++) { 
-					    $config['upload_path']          = './upload/dashboard/';
+			if ($user->id) {
+				$data['users'] = $this->ion_auth->users()->result();
+				foreach ($data['users'] as $k => $user)
+					{
+						$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+		            }
+        	$file = $this->input->post("field");
+			if ($user->id) {
+				$this->session->set_flashdata('message', $this->ion_auth->messages());
+		    			$file1 = time().$_FILES["field2"]['name'];
+					    $config['upload_path']          = './upload/about/';
 					    $config['allowed_types']        = 'gif|jpg|png';
-					    $config['max_size']             = 9024; // 1MB
+					    $config['file_name']            = $file1;
+					    $config['max_size']             = 19024; // 1MB
 					    $this->load->library('upload', $config);
-					     $file1 = $_FILES["field2".$i]["name"];
-						   	if ( (!$this->upload->do_upload('field2'.$i)) )
+					    $this->upload->initialize($config); 
+					     //$file1 = $_FILES["field2".$i]["name"];
+						   	if ( (!$this->upload->do_upload('field2')) )
 				                {
 				                    $error = array('error' => $this->upload->display_errors());
 				                    var_dump($error); //$this->load->view('upload_form', $error);
 				                }
 			                else
 			                {
-			                        $data = [
-										'id_user' => $this->ion_auth->get_user_id(),
-										'id_page' => $this->input->post('page'),
-										'id_sub_page' => $this->input->post('sub'),
-										'text'  => $this->input->post('field1'.$i),
-										'file'  => $file1,
-										'create_at' => date("Y-m-d H:i:s"),
-										];
-										$this->M_data->input_data($data,'header');
-										$this->session->set_flashdata('data','Data baru berhasil di input..');
-										
+		                        $data = [
+									'id_user' => $this->ion_auth->get_user_id(),
+									'id_page' => $this->input->post('page'),
+									'id_sub_page' => $this->input->post('sub'),
+									'text'  => $this->input->post('field1'),
+									'file'  => $file1,
+									'create_at' => date("Y-m-d H:i:s"),
+									];
+									$this->M_data->input_data($data,'header');
+									$this->session->set_flashdata('data','Data baru berhasil di input..');
 			                }
-			    
-					}
-				 }else{
-			              $this->session->set_flashdata('data','Data yang Anda memasukan kosong..');
-			      }
-				
 					redirect('admin/about_page/action/header/', 'refresh');
 				
 			}else {
@@ -301,7 +293,6 @@ class About_page extends CI_Controller {
 		}else {
 			echo "FALSE";
 		}
-		
 	}
 
 	public function header_edit(){
@@ -313,28 +304,37 @@ class About_page extends CI_Controller {
 		if ($user->id) {
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
 			$id = $this->input->post('id');
-					    $config['upload_path']          = './upload/dashboard/';
-					    $config['allowed_types']        = 'gif|jpg|png';
-					    $config['max_size']             = 9024; // 1MB
-					    $this->load->library('upload', $config);
-					     $file1 = $_FILES["field2"]["name"];
-					   	if ( (!$this->upload->do_upload('field2')) )
-			                {
-			                    $error = array('error' => $this->upload->display_errors());
-			                    var_dump($error); //$this->load->view('upload_form', $error);
-			                }
-			                else
-			                {
-			                        $data = [
-										'text'  => $this->input->post('field1'),
-										'file'  => $file1,
-										'update_at' => date("Y-m-d H:i:s"),
-										];
-										$this->M_data->update_data($id,$data,'header');
-										$this->session->set_flashdata('data','Update data berhasil..');
-										
-			                }
-					redirect('admin/about_page/action/header/', 'refresh');
+			    $file1 = time().$_FILES["field2"]['name'];
+			    $config['upload_path']          = './upload/about/';
+			    $config['allowed_types']        = 'gif|jpg|png';
+			    $config['file_name']            = $file1;
+			    $config['max_size']             = 9024; // 1MB
+			    $this->load->library('upload', $config);
+			    $this->upload->initialize($config); 
+			   	if ( (!$this->upload->do_upload('field2')) )
+	                {
+	                    $error = array('error' => $this->upload->display_errors());
+	                    var_dump($error); //$this->load->view('upload_form', $error);
+	                }
+	                else
+	                {
+	                        $data = [
+								'text'  => $this->input->post('field1'),
+								'file'  => $file1,
+								'update_at' => date("Y-m-d H:i:s"),
+								];
+								$input = $this->input->post("id");
+								$data1['header'] = $this->M_data->tampil_data_controller($input,'header')->result();
+						        foreach ($data1['header'] as $k => $file)
+								{
+									$data1['header'][$k]= $this->M_data->tampil_data_controller($input,'header')->result();
+					            }
+					            unlink("./upload/about/$file->file");
+								$this->M_data->update_data($id,$data,'header');
+								$this->session->set_flashdata('data','Update data berhasil..');
+								
+	                }
+			redirect('admin/about_page/action/header/', 'refresh');
 				
 			}else {
 				echo "FALSE";
@@ -351,8 +351,14 @@ class About_page extends CI_Controller {
 			//echo $user->id;
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
 			$input = $this->input->get("id");
+			$data1['header'] = $this->M_data->tampil_data_controller($input,'header')->result();
+	        foreach ($data1['header'] as $k => $file)
+			{
+				$data1['header'][$k]= $this->M_data->tampil_data_controller($input,'header')->result();
+            }
 				if ($this->M_data->tampil_to_form($user->id,2,1,'header')->result()){
 						$where = $input;
+						unlink("./upload/about/$file->file");
 						$this->M_data->hapus_data($where,'header');
 						$this->session->set_flashdata('data','Hapus data berhasil..');
 				}
@@ -360,8 +366,9 @@ class About_page extends CI_Controller {
 		} else {
 			echo "Fail !!";
 		}
-		
 	}
+
+	
 
 	public function about1(){
 		$data['users'] = $this->ion_auth->users()->result();
@@ -475,8 +482,9 @@ class About_page extends CI_Controller {
 							'id_user' => $this->ion_auth->get_user_id(),
 							'id_page' => $this->input->post('page'),
 							'id_sub_page' => $this->input->post('sub'),
-							'icon'  =>  $this->input->post('field1')[$i],
+							'headertext'  =>  $this->input->post('field1')[$i],
 							'text'  =>  $this->input->post('field2')[$i],
+							'icon'  =>  $this->input->post('field3')[$i],
 							'create_at' => date("Y-m-d H:i:s"),
 							];
 							$this->M_data->input_data($data,'about2');
@@ -509,8 +517,9 @@ class About_page extends CI_Controller {
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
 			$id = $this->input->post('id');
                 $data = [
-					'icon'  =>  $this->input->post('field1'),
+					'headertext'  =>  $this->input->post('field1'),
 					'text'  =>  $this->input->post('field2'),
+					'icon'  =>  $this->input->post('field3'),
 					'update_at' => date("Y-m-d H:i:s"),
 					];
 					$this->M_data->update_data($id,$data,'about2');

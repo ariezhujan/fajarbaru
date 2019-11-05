@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url('assets/admin/img/apple-icon.png') ?>">
-    <link rel="icon" type="image/png" href="<?php echo base_url('assets/admin/img/favicon.ico') ?>">
+    <link rel="icon" type="image/png" href="<?php echo base_url('assets/img/fileuser/logofajar.png') ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>ADMIN FAJAR BARU TEKNIK MAKMUR</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -44,12 +44,6 @@
                         <a class="nav-link" href="<?php echo base_url('admin/dashboard') ?>">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Dashboard</p>
-                        </a>
-                    </li>
-                    <li class="nav-item <?php if($this->uri->segment(2) == "user_profile"){echo "active";} ?>">
-                        <a class="nav-link" href="<?php echo base_url('admin/user_profile') ?>">
-                            <i class="nc-icon nc-circle-09"></i>
-                            <p>User Profile</p>
                         </a>
                     </li>
                     <li class="nav-item <?php if($this->uri->segment(2) == "home_page"){echo "active";} ?>">
@@ -111,8 +105,8 @@
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <span class="nav-link"> <?php echo anchor('admin/auth/logout', lang('index_logout_link'))?>
-                                </span>
+                                <div class="nav-link"> <?php echo anchor('admin/auth/logout', lang('index_logout_link'))?>
+                                </div>
                             </li>
                         </ul>
                     </div>

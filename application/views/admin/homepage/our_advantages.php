@@ -2,7 +2,7 @@
     <div class="section section-team text-center">
       <div class="container">
       <h2 class="title">Our Advantages</h2>
-      <p class="text-danger"><?php echo $this->session->flashdata('data'); ?></p> 
+       <div class="alert alert-success" role="alert"><?php echo $this->session->flashdata('data'); ?></div>  
         <div class="team">
           <!--Table-->
           <table id="example" class="table table-striped table-bordered table-responsive">
@@ -76,13 +76,11 @@
                 <form class="form-horizontal" action="<?php echo base_url('admin/home_page/our_advantages_edit')?>" method="post" enctype="multipart/form-data" role="form">
                   <div class="modal-body">
                           <div class="form-group">
-                              
-                              <div class="col-md-6">
-                                <label>Industry Category</label>
+                              <div class="col-md-12">
+                                <label>Our Advantages</label>
                                   <input type="hidden" id="id" name="id">
                                   <input type="text" class="form-control" id="field" name="field1" >
                               </div>
-                              
                       </div>
                       <div class="modal-footer">
                           <button class="btn btn-primary" type="submit" style="margin-left: 500px;"><i class="now-ui-icons ui-1_check"></i> Simpan</button>
@@ -127,7 +125,7 @@
  
             // Isi nilai pada field
             modal.find('#id').attr("value",div.data('id'));
-            modal.find('#file').attr("value",div.data('file'));
+            modal.find('#field').attr("value",div.data('file'));
         });
     });
 

@@ -20,7 +20,7 @@
 						<h4 class="mt-0 mb-0"><?php echo htmlspecialchars($user->first_name,ENT_QUOTES,'UTF-8');?>&nbsp;<?php echo htmlspecialchars($user->last_name,ENT_QUOTES,'UTF-8');?></h4>
 						<p class="mt-0 mb-0"><i class="fa fa-phone mr-1"></i><?php echo htmlspecialchars($user->phone,ENT_QUOTES,'UTF-8');?></p>
 						<p class="mt-0 mb-0"><i class="fa fa-envelope mr-1"></i><?php echo htmlspecialchars($user->email,ENT_QUOTES,'UTF-8');?></p>
-						<p class="small mb-4"> <i class="fa fa-map-marker mr-2"></i><?php echo ($user->active) ? /*anchor("admin/auth/deactivate/".$user->id, lang('index_active_link'))*/'Admin' : /*anchor("admin/auth/activate/". $user->id, lang('index_inactive_link'))*/ 'User';?></p>
+						<!--<p class="small mb-4"> <i class="fa fa-map-marker mr-2"></i><?php echo ($user->active) ? /*anchor("admin/auth/deactivate/".$user->id, lang('index_active_link'))*/'Admin' : /*anchor("admin/auth/activate/". $user->id, lang('index_inactive_link'))*/ 'User';?></p>-->
 						<?php endforeach ?>
                     </div>
                 </div>
@@ -30,11 +30,11 @@
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item">
 						<h5 class="font-weight-bold mb-0 d-block"><i class="fa fa-user-circle-o mr-1"></i></h5>
-							<small class="text-muted"> <?php echo anchor('admin/auth/create_user', lang('index_create_user_link'))?></small>
+							<small class="text-muted"> <?php //echo anchor('admin/auth/create_user', lang('index_create_user_link'))?></small>
                     </li>
                     <li class="list-inline-item">
 						<h5 class="font-weight-bold mb-0 d-block"><i class="fa fa-user-circle-o mr-1"></i></h5>
-						<small class="text-muted"><?php echo anchor('admin/auth/create_group', lang('index_create_group_link'))?></small>
+						<small class="text-muted"><?php //echo anchor('admin/auth/create_group', lang('index_create_group_link'))?></small>
                     </li>
                 </ul>
             </div>-->
@@ -50,18 +50,19 @@
 		<div class="card">
         <div class="bg-white shadow rounded overflow-hidden">
 			<div id="infoMessage"><?php echo $this->session->message; ?></div>
-            <div class="bg-light p-4 d-flex justify-content-end text-center">
+
+            <!--<div class="bg-light p-4 d-flex justify-content-end text-center">
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item">
 						<h5 class="font-weight-bold mb-0 d-block"><i class="fa fa-user-circle-o mr-1"></i></h5>
-							<small class="text-muted"> <?php echo anchor('admin/auth/create_user', lang('index_create_user_link'))?></small>
+							<small class="text-muted"> <?php //echo anchor('admin/auth/create_user', lang('index_create_user_link'))?></small>
                     </li>
                     <li class="list-inline-item">
 						<h5 class="font-weight-bold mb-0 d-block"><i class="fa fa-user-circle-o mr-1"></i></h5>
-						<small class="text-muted"><?php echo anchor('admin/auth/create_group', lang('index_create_group_link'))?></small>
+						<small class="text-muted"><?php //echo anchor('admin/auth/create_group', lang('index_create_group_link'))?></small>
                     </li>
                 </ul>
-			</div>
+			</div>-->
 
             <div class="py-5 px-4">
                     <h5 class="mb-3">Login History</h5>

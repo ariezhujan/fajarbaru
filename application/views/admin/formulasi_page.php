@@ -1,15 +1,19 @@
 
 <blockquote class="card">
   <div class="page-header page-header-small">
-    <div class="page-header-image" data-parallax="true" style='background-image: url("<?php echo base_url() ?>/assets/img/fileuser/form3.jpg");'>
-    </div>
+    <?php foreach ($formulasi1 as $key) { ?>
+      <div class="page-header-image" data-parallax="true" style='background-image: url("<?php echo site_url('upload/formulasi/'. $key->file) ?>");'>
+      </div>
+    <?php } ?>
     <div class="content-center">
       <div class="container">
-        <h2 class="title"><strong>Formulasi System</strong></h2>
+        <?php foreach ($formulasi1 as $key) { ?>
+          <h2 class="title"><strong style="color: white"><?php echo $key->text; ?></strong></h2>
+        <?php } ?>
       </div>
     </div>
   </div>
-  <p class="text-center"><a href="<?php echo site_url('admin/formulasi_page/action/formulasi1') ?>" class="btn btn-info">Edit</a></p>
+  <p class="text-center"><a href="<?php echo site_url('admin/formulasi_page/action/formulasi1') ?>" class="btn btn-info">Edit / Konten 1</a></p>
 </blockquote>
 
 <div class="section section-about-us">
@@ -19,14 +23,20 @@
 <blockquote class="card">
   <div class="row" style="padding: 20px">
       <div class="col-md-6 text-left col-z-index">
-          <h1 class="title"> Formulation, with lots of help from our experts </h1>
-          <p class="text-center"><a href="<?php echo site_url('admin/formulasi_page/action/formulasi2') ?>" class="btn btn-info">Edit</a></p>
-          <h4 class="desc">You can get it so easily. That is why our experts are very understanding of the concept, pembauatan until finishing the final stage of the formulation industry.</h4>
-          <p class="text-center"><a href="<?php echo site_url('admin/formulasi_page/action/formulasi3') ?>" class="btn btn-info">Edit</a></p>
+        <?php foreach ($formulasi2 as $key){ ?>
+          <h1 class="title"> <?php echo $key->text; ?> </h1>
+        <?php } ?>
+          <p class="text-center"><a href="<?php echo site_url('admin/formulasi_page/action/formulasi2') ?>" class="btn btn-info">Edit / Konten 2</a></p>
+          <?php foreach ($formulasi3 as $key){ ?>
+          <h4 class="desc"><?php echo $key->text; ?> </h4>
+          <?php } ?>
+          <p class="text-center"><a href="<?php echo site_url('admin/formulasi_page/action/formulasi3') ?>" class="btn btn-info">Edit / Konten 3</a></p>
       </div>
       <div class="col-md-6">
-          <img src="<?php echo base_url() ?>/assets/img/fileuser/chemistry-formula.png" alt="illustration" class="img-responsive">
-          <p class="text-center"><a href="<?php echo site_url('admin/formulasi_page/action/formulasi4') ?>" class="btn btn-info">Edit</a></p>
+        <?php foreach ($formulasi4 as $key){ ?>
+          <img src="<?php echo base_url('upload/formulasi/'. $key->file) ?>" alt="illustration" class="img-responsive">
+        <?php } ?>
+          <p class="text-center"><a href="<?php echo site_url('admin/formulasi_page/action/formulasi4') ?>" class="btn btn-info">Edit / Konten 4</a></p>
       </div>
   </div>
 </blockquote>
@@ -48,25 +58,18 @@
           <div class="lid"></div>
           <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class=""></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1" class=""></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2" class="active"></li>
       </ol>
       <div class="carousel-inner" role="listbox">
+        <?php foreach ($formulasi5 as $key) { ?>
         <div class="carousel-item">
-          <img class="d-block" src="<?php echo base_url() ?>/assets/img/formulasiliquid/liquid1.jpg" alt="First slide">
+          <img style="max-height: 350px;height: 350px;width: 610px;" class="d-block" src="<?php echo base_url('upload/formulasi/'. $key->file) ?>" alt="Second slide">
           <div class="carousel-caption d-none d-md-block">
             <h5></h5>
           </div>
         </div>
-        <div class="carousel-item">
-          <img class="d-block" src="<?php echo base_url() ?>/assets/img/tangki/tank5.jpg" alt="Second slide">
-          <div class="carousel-caption d-none d-md-block">
-            <h5></h5>
-          </div>
-        </div>
+        <?php } ?>
         <div class="carousel-item active">
-          <img class="d-block" src="<?php echo base_url() ?>/assets/img/formulasiliquid/liquid6.jpg" alt="Third slide">
+          <img style="height: 350px" class="d-block" src="<?php echo base_url() ?>/assets/img/fileuser/logonamafajar.png" alt="Third slide">
           <div class="carousel-caption d-none d-md-block">
             <h5></h5>
           </div>
@@ -79,16 +82,21 @@
         <i class="now-ui-icons arrows-1_minimal-right"></i>
       </a>
     </div>
-    <p class="text-center"><a href="<?php echo site_url('admin/tangkimixer_page/action/tangkimixer1') ?>" class="btn btn-info">Edit</a></p>
+    <p class="text-center"><a href="<?php echo site_url('admin/formulasi_page/action/formulasi5') ?>" class="btn btn-info">Edit / Konten 5</a></p>
       </div>
   </div>
   <div class="col-md-5">
       <div class="info info-horizontal text-center">
           <div class="description">
-              <h3>We have built many formulation systems. Next is yours.</h3>
-               <p class="desc">From one month projects to 5 years of continuous development on the same app. We have done it all and then some.</p>
+            <?php foreach ($formulasi6 as $key) { ?>
+              <h3><?php echo $key->text; ?></h3>
+            <?php } ?>
+              <p class="text-center"><a href="<?php echo site_url('admin/formulasi_page/action/formulasi6') ?>" class="btn btn-info">Edit / Konten 6</a></p>
+               <?php foreach ($formulasi7 as $key) { ?>
+               <p class="desc"><?php echo $key->text; ?></p>
+             <?php } ?>
           </div>
-          <p class="text-center"><a href="<?php echo site_url('admin/tangkimixer_page/action/tangkimixer1') ?>" class="btn btn-info">Edit</a></p>
+          <p class="text-center"><a href="<?php echo site_url('admin/formulasi_page/action/formulasi7') ?>" class="btn btn-info">Edit / Konten 7</a></p>
       </div>
   </div>
 </div>
@@ -103,13 +111,14 @@
   <div class="row">
     <div class="col-md-8 ml-auto mr-auto">
       <h2 class="title text-center"></h2>
-      <h5 class="description text-justify">
-        Whether you’re building out a new chemical plant or testing a new process, you want to make sure you are doing business with a company that knows chemical processing and engineering. We have a long history in the chemical industry and understand the unique challenges in chemical stirrers and liquid processing equipment. Knowing how materials work together is important and often times does not leave much room for error.<br>
-        With us you will get precise engineering coupled with expertise and understanding to deliver high quality and safe industrial chemical mixers. Contact us for more information on our liquid processing equipment and chemical mixer machines.
+      <?php foreach ($formulasi8 as $key) { ?>
+      <h5 class="desc text-justify">
+        <?php echo $key->text; ?>
       </h5>
+    <?php } ?>
     </div>
   </div>
-   <p class="text-center"><a href="<?php echo site_url('admin/tangkimixer_page/action/tangkimixer1') ?>" class="btn btn-info">Edit</a></p>
+   <p class="text-center"><a href="<?php echo site_url('admin/formulasi_page/action/formulasi8') ?>" class="btn btn-info">Edit / Konten 8</a></p>
 </blockquote>
 
 
@@ -136,41 +145,37 @@
               <div class="tab-content gallery">
                 <div class="tab-pane active" id="install" role="tabpanel">
                   <div class="col-md-10 ml-auto mr-auto">
-                    <br>
-                    <p class="text-center"><a href="<?php echo site_url('admin/tangkimixer_page/action/tangkimixer1') ?>" class="btn btn-info">Edit Liquid</a></p>
                     <div class="row collections">
                       <div class="col-md-6">
-                        <img src="<?php echo base_url() ?>/assets/img/formulasiliquid/liquid1.jpg" alt="" class="img-raised">
-                        <img src="<?php echo base_url() ?>/assets/img/formulasiliquid/liquid2.jpg" alt="" class="img-raised">
-                        <img src="<?php echo base_url() ?>/assets/img/formulasiliquid/liquid3.jpg" alt="" class="img-raised">
-                        <img src="<?php echo base_url() ?>/assets/img/formulasiliquid/liquid4.jpg" alt="" class="img-raised">
-                        <img src="<?php echo base_url() ?>/assets/img/formulasiliquid/liquid5.jpg" alt="" class="img-raised">
-                        <img src="<?php echo base_url() ?>/assets/img/formulasiliquid/liquid6.jpg" alt="" class="img-raised">
+                        <p class="text-center"><a href="<?php echo site_url('admin/formulasi_page/action/formulasi9left') ?>" class="btn btn-info">Edit Liquid Left</a></p>
+                        <?php foreach ($formulasi9left as $key) { ?>
+                        <img src="<?php echo base_url('upload/formulasi/'. $key->file) ?>" alt="" class="img-raised">
+                      <?php } ?>
                       </div>
                       <div class="col-md-6">
-                        <img src="<?php echo base_url() ?>/assets/img/formulasiliquid/liquid7.jpg" alt="" class="img-raised">
-                        <img src="<?php echo base_url() ?>/assets/img/formulasiliquid/liquid8.jpg" alt="" class="img-raised">
-                        <img src="<?php echo base_url() ?>/assets/img/formulasiliquid/liquid9.jpg" alt="" class="img-raised">
-                        <img src="<?php echo base_url() ?>/assets/img/formulasiliquid/liquid10.jpg" alt="" class="img-raised">
-                        <img src="<?php echo base_url() ?>/assets/img/formulasiliquid/liquid11.jpg" alt="" class="img-raised">
-                        <img src="<?php echo base_url() ?>/assets/img/formulasiliquid/liquid12.jpg" alt="" class="img-raised">
+                        <p class="text-center"><a href="<?php echo site_url('admin/formulasi_page/action/formulasi9right') ?>" class="btn btn-info">Edit Liquid Right</a></p>
+                        <?php foreach ($formulasi9right as $key) { ?>
+                        <img src="<?php echo base_url('upload/formulasi/'. $key->file) ?>" alt="" class="img-raised">
+                      <?php } ?>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="tab-pane" id="raw" role="tabpanel">
                   <div class="col-md-10 ml-auto mr-auto">
-                    <br>
-                    <p class="text-center"><a href="<?php echo site_url('admin/tangkimixer_page/action/tangkimixer1') ?>" class="btn btn-info">Edit Powder</a></p>
                     <div class="row collections">
                       <div class="col-md-6">
-                        <img src="<?php echo base_url() ?>/assets/img/formulasipowder/powder1.jpg" alt="" class="img-raised">
-                        <img src="<?php echo base_url() ?>/assets/img/formulasipowder/powder2.jpg" alt="" class="img-raised">
-                        <img src="<?php echo base_url() ?>/assets/img/tangki/tank5.jpg" alt="" class="img-raised">
+                      <p class="text-center"><a href="<?php echo site_url('admin/formulasi_page/action/formulasi10left') ?>" class="btn btn-info">Edit Powder Left</a></p>
+                      <?php foreach ($formulasi10left as $key) { ?>
+                        <img src="<?php echo base_url('upload/formulasi/'. $key->file) ?>" alt="" class="img-raised">
+                      <?php } ?>
                       </div>
                       <div class="col-md-6">
-                        <img src="<?php echo base_url() ?>/assets/img/formulasipowder/powder3.jpg" alt="" class="img-raised">
-                        <img src="<?php echo base_url() ?>/assets/img/tangki/tank10.jpg" alt="" class="img-raised">
+                        <p class="text-center"><a href="<?php echo site_url('admin/formulasi_page/action/formulasi10right') ?>" class="btn btn-info">Edit Powder Right</a></p>
+                         <?php foreach ($formulasi10right as $key) { ?>
+                          <img src="<?php echo base_url('upload/formulasi/'. $key->file) ?>" alt="" class="img-raised">
+                        <?php } ?>
+                        <img src="<?php echo base_url() ?>" alt="" class="img-raised">
                       </div>
                     </div>
                     </div>
